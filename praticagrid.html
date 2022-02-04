@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Login</title>
+
+    <style>
+        body{
+
+            background: url("static/image/beach-gcc1d81d8c_1920.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #box-card{
+            background-color: rgba(7, 7, 7, 0.562);
+        }
+       
+        #username::placeholder, #password::placeholder {
+            color:rgba(255, 255, 255, 0.548);
+            
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <div class="card p-5 rounded shadow" id="box-card"  style="width: 500px; height: 400px;">
+                <h3 class="text-center mb-5 text-white">Iniciar sesion</h3>
+                <form action="./Usuario.html" class = "needs-validation" novalidate>
+                    <div class="input-group mb-4 position-relative">
+                        <input type="text" id="username" class="form-control bg-transparent text-white fw-bold border border-white ps-5" placeholder="Username" aria-label="Username"
+                            required>
+                        <div class="invalid-feedback">
+                          El campo no pueda estar vacio
+                        </div>
+                        <i class="fas fa-user-tie position-absolute text-white" style="top: 12px; left: 1rem;"></i>    
+                    </div>
+                    <div class="input-group mb-4 position-relatuve">
+                        <input type="password" id="password" required class="form-control bg-transparent text-white fw-bold border border-white ps-5" placeholder="Password"
+                            aria-describedby="basic-addon1">
+                        <div class="invalid-feedback">
+                            El campo no pueda estar vacio
+                        </div>    
+                        <div class="fas fa-eye position-absolute text-white" role="button" id="btn-show-password" onclick="showPassword()" style="top: 12px; left: 1rem; z-index: 99;"></div>
+                    </div>
+                    <div class="my-3">
+                        <span class="text-white">No tienes cuenta?  <a href="./registroUser.html">Registrarte</a></span>
+                    </div>
+                    <div class="my-4 d-grid">
+                        <button type="submit" class="btn btn-primary fw-bold">Iniciar sesion</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+
+    
+    <script src="static/js/validateform.js"></script>
+    <script src="https://kit.fontawesome.com/dc694244d4.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

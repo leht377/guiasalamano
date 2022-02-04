@@ -1,0 +1,57 @@
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
+
+.position-icon-left{
+    top: 12px; 
+    right: 1rem;
+}
+
+.position-icon-right{
+    top: 12px; 
+    left: 1rem;
+}
+
+
+input::placeholder {
+    color:rgba(255, 255, 255, 0.548) !important;
+}
+
+/* ________________________________________________*/
+/* ___________________ESTILOS LOGIN ________________*/
+/* ________________________________________________*/
+
+
+#container-login{
+    background: url("../image/beach-gcc1d81d8c_1920.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#box-card{
+    background-color: rgba(7, 7, 7, 0.562);
+}
+
+
+
+/* ________________________________________________*/
+/* ___________________ESTILOS REGISTRO GUIA_______________*/
+/* ________________________________________________*/
+
+
+#container-registro-guia{
+    background: url("../image/luggage-g10add081f_1920.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+#box-card-guia{
+    background-color: rgba(7, 7, 7, 0.856);
+}

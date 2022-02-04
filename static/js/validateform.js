@@ -1,0 +1,49 @@
+const [usermame, password ] = ["Diego","12345"];
+
+(function () {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+
+
+function validatedCredentials(event){
+  const formLogin = document.getElementById("form_login");
+  if( formLogin.classList.contains === "was-validated"){
+    formLogin.addEventListener('submit', function (event) {
+      event.preventDefault()
+      event.stopPropagation()
+    })
+      var usuario = document.getElementById("usernamelogin").value;
+      var contrasena = document.getElementById("passwordlogin").value;
+      console.log(usuario)
+  }
+}
+
+function showPassword() { 
+    const passwordInput = document.getElementById('passwordlogin');
+    const btnShowPassword = document.getElementById('btn-show-password');
+
+    if(btnShowPassword.classList.contains('fa-eye')){
+        btnShowPassword.classList.replace('fa-eye','fa-eye-slash')
+        passwordInput.type = 'text';
+
+    }else{
+        btnShowPassword.classList.replace('fa-eye-slash','fa-eye')
+        passwordInput.type = 'password';
+    }
+}
