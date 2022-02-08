@@ -8,7 +8,7 @@
     <title>Guias a la mano</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="static/css/estilo.css">
+    <link rel="stylesheet" href="../assets/css/estilo.css">
 
 </head>
 
@@ -88,7 +88,7 @@
         <header class="bg-violet-dark row" style="height: 15%;">
             <div class="col-xl-4 col-md-6 d-flex justify-content-xl-start justify-content-center  align-items-center">
                 <div class="user-header">
-                    <img src="static/image/girl-gcd6f4fcad_640.jpg" class="img-fluid" alt="User Pic">
+                    <img src="../assets/image/girl-gcd6f4fcad_640.jpg" class="img-fluid" alt="User Pic">
                 </div>
                 <h6 class="mx-3 mt-2 text-white fw-bold">Luis Hernández</h6>
             </div>
@@ -163,9 +163,9 @@
                     <div class="row" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <div class="col-md-4">
                             <div class="card">
-                                <div class="img1"><img src="static/image/beach-gcc1d81d8c_1920.jpg" alt="" srcset="">
+                                <div class="img1"><img src="../assets/image/beach-gcc1d81d8c_1920.jpg" alt="" srcset="">
                                 </div>
-                                <div class="img2"><img src="static/image/girl-gcd6f4fcad_640.jpg" alt="" srcset="">
+                                <div class="img2"><img src="../assets/image/girl-gcd6f4fcad_640.jpg" alt="" srcset="">
                                 </div>
                                 <div class="main-text">
                                     <h2>Person One</h2>
@@ -450,7 +450,7 @@
             <!-- Copyright -->
         </footer>
     </main>
-    <script src="static/js/app.js"></script>
+    <script src="../assets/js/app.js"></script>
     <script src="https://kit.fontawesome.com/dc694244d4.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
