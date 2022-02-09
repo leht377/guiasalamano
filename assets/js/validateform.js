@@ -5,7 +5,6 @@ const [usermame, password ] = ["Diego","12345"];
   
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     var forms = document.querySelectorAll('.needs-validation')
-  
     // Loop over them and prevent submission
     Array.prototype.slice.call(forms)
       .forEach(function (form) {
@@ -14,7 +13,7 @@ const [usermame, password ] = ["Diego","12345"];
             event.preventDefault()
             event.stopPropagation()
           }
-  
+          console.log(!form.checkValidity());
           form.classList.add('was-validated')
         }, false)
       })
@@ -34,8 +33,9 @@ function validatedCredentials(event){
   }
 }
 
-function showPassword() { 
-    const passwordInput = document.getElementById('passwordlogin');
+function showPassword(ID_input) { 
+    
+    const passwordInput = document.getElementById(ID_input);
     const btnShowPassword = document.getElementById('btn-show-password');
 
     if(btnShowPassword.classList.contains('fa-eye')){

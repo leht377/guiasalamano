@@ -35,7 +35,7 @@ input::placeholder {
 }
 
 #box-card{
-    background-color: rgba(7, 7, 7, 0.562);
+    background-color: rgba(7, 7, 7, 0.842);
 }
 
 
@@ -53,7 +53,7 @@ input::placeholder {
 }
 
 #box-card-guia{
-    background-color: rgba(7, 7, 7, 0.856);
+    background-color: rgba(7, 7, 7, 0.842);
 }
 
 
@@ -68,5 +68,5 @@ input::placeholder {
   }
 
   #box-card-registrouser{
-    background-color: rgba(7, 7, 7, 0.562);
+    background-color: rgba(7, 7, 7, 0.842);
   }

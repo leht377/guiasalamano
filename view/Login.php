@@ -48,13 +48,13 @@
                         </div>
                         <i class="fas fa-user-tie position-absolute text-white position-icon-right" ></i>    
                     </div>
-                    <div class="input-group mb-4 position-relatuve">
+                    <div class="input-group mb-4 position-relative">
                         <input type="password" id="passwordlogin" required class="form-control bg-transparent text-white fw-bold ps-5" placeholder="Password"
                             aria-describedby="basic-addon1">
                         <div class="invalid-feedback">
                             El campo no pueda estar vacio
                         </div>    
-                        <div class="fas fa-eye position-absolute text-white position-icon-right" role="button" id="btn-show-password" onclick="showPassword()" style="z-index: 99;"></div>
+                        <div class="fas fa-eye position-absolute text-white position-icon-right" role="button" id="btn-show-password" onclick="showPassword('passwordlogin')" style="z-index: 99;"></div>
                     </div>
                     <div class="my-3">
                         <span class="text-white">No tienes cuenta?  <a href="index.php?c=registro">Registrarte</a></span>
