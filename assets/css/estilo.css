@@ -182,3 +182,12 @@ body::-webkit-scrollbar-thumb {
     padding: 0 35px;
     margin-bottom: 0;
 }
+
+/* ________________________________________________*/
+/* ___________________ESTILOS CARD DESTINO__________*/
+/* ________________________________________________*/
+
+
+#estilo_card_destino{
+    text-decoration: none;
+}

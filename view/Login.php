@@ -35,11 +35,10 @@
 
     <div class="container ">
         <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-            <div class="container p-5 rounded shadow" id="box-card"  style="width: 500px; height: 400px;">
-                <h3 class="text-center mb-5 text-white">Iniciar sesion</h3>
+            <div class="container-sm container-md p-5 rounded shadow" id="box-card"  style="width: 500px; min-height: 400px;">
+                <h1 class="text-center mb-5 text-white">Iniciar sesion</h1>
 
-                <form  action="usuario.html" onsubmit=""   class = "needs-validation" novalidate id="form_login" autocomplete="off">
-                    
+                <form action="index.php?c=login&a=validarCredenciales" method="POST" class = "needs-validation " novalidate id="form_login" autocomplete="off">
                     <div class="input-group mb-4 position-relative">
                         <input type="text" id="usernamelogin" class="form-control bg-transparent text-white fw-bold  ps-5" placeholder="Username" aria-label="Username"
                             required>

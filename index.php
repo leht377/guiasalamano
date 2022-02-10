@@ -6,7 +6,7 @@
     if(isset($_GET['c'])){
 		
 		$controlador = cargarControlador($_GET['c']);
-		
+	
 		if(isset($_GET['a'])){
 			if(isset($_GET['id'])){
 				cargarAccion($controlador, $_GET['a'], $_GET['id']);

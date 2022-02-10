@@ -16,7 +16,7 @@
 <body id="container-registro-cliente">
   <main class="d-flex justify-content-center align-items-center vh-100 contenedo-formulario-registro">
     <form class="container-sm container-md  p-5 needs-validation" novalidate action="index.php?c=registro&a=registrarCliente" method="post" id="box-card-registrouser" autocomplete="off" style="width: 800px;">
-      <h2 class="text-white mb-2 text-center mb-4">Registro de clientes</h2>
+      <h1 class="text-white mb-2 text-center mb-4">Registro de clientes</h1>
       <section class="row">
 
         <div class="col-sm-6 col-md-4">

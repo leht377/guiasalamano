@@ -1,4 +1,3 @@
-const [usermame, password ] = ["Diego","12345"];
 
 (function () {
     'use strict'
@@ -20,18 +19,6 @@ const [usermame, password ] = ["Diego","12345"];
   })()
 
 
-function validatedCredentials(event){
-  const formLogin = document.getElementById("form_login");
-  if( formLogin.classList.contains === "was-validated"){
-    formLogin.addEventListener('submit', function (event) {
-      event.preventDefault()
-      event.stopPropagation()
-    })
-      var usuario = document.getElementById("usernamelogin").value;
-      var contrasena = document.getElementById("passwordlogin").value;
-      console.log(usuario)
-  }
-}
 
 function showPassword(ID_input) { 
     

@@ -30,7 +30,8 @@
             $cliente = new cliente_model();
             $cliente->registrar_cliente($nombres, $apellidos, $documento,$celular, $edad,$email, $procedencia_id, $tipdocumento_id, $user, $password);
 
-            $this->index();
+            header('Location:index.php');
+            die();
 
         }
     }
