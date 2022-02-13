@@ -18,7 +18,7 @@
 <body id="container-registro-guia">
   <main class="d-flex align-items-center vh-100">
 
-    <form class="px-5 py-4 needs-validation container-sm container-md rounded" action="index.php?c=registroguia&a=registrasGuia" novalidate autocomplete="off" method="post" id="box-card-guia" style="width: 800px";>
+    <form class="px-5 py-4 needs-validation container-sm container-md rounded" action="index.php?c=registroguia&a=registrasGuia" novalidate autocomplete="off" method="post" id="box-card-guia" enctype="multipart/form-data" style="width: 800px";>
       <h1 class="text-center text-white mb-4">Registro de guía</h1>
       <section class="row">
         <div class=" col-sm-12 col-md-4  ">
@@ -132,6 +132,10 @@
           </div>
         </div>
 
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Default file input example</label>
+          <input type="file" name="file">
+        </div>
         
       </section>
       <div class="form-check mt-3">

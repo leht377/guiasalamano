@@ -6,7 +6,6 @@
         }
 
         public function index(){
-            
             $cliente = new cliente_model();
             $data_procedencia["procedencia"] = $cliente->getinfoProcedencia(); 
             $data_tipoducumento["tipo_documento"] = $cliente->getinfotipodocumento();

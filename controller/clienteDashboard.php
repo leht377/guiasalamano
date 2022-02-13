@@ -6,25 +6,33 @@
         }
 
         public function index(){
-            $dash = new clienteDashboard_model();
-            $data["categoria"] = $dash->getCategorias(); 
-            $data[ "viewRequerida"]= "./view/component/sectionCategoria.php";
             require_once("./view/clienteDashboard.php");
         }
 
+        public function viewCategorias(){
+            $dash = new clienteDashboard_model();
+            $dataCategorias = $dash->getCategorias(); 
+            $dataJson = json_encode($dataCategorias);
+            echo $dataJson;
+
+        }
 
         public function viewSitios($id){
             $dash = new clienteDashboard_model();
-            $data["sitios"] = $dash->getSitios($id); 
-            $data[ "viewRequerida"]= "./view/component/sectionsitios.php";
-            require_once("./view/clienteDashboard.php");
+            $datasitios = $dash->getSitios($id); 
+            $dataJson = json_encode($datasitios);
+            echo $dataJson;
+            // $data[ "viewRequerida"]= "./view/component/sectionsitios.php";
+            // require_once("./view/clienteDashboard.php");
         }
         
         public function viewguias($id){
             $dash = new clienteDashboard_model();
-            $data["guias"] = $dash->getGuias($id); 
-            $data[ "viewRequerida"]= "./view/component/sectionGuias.php";
-            require_once("./view/clienteDashboard.php");
+            $dataguias = $dash->getGuias($id); 
+            $dataguiasjson = json_encode($dataguias);
+            echo $dataguiasjson;
+            // $data[ "viewRequerida"]= "./view/component/sectionGuias.php";
+            // require_once("./view/clienteDashboard.php");
         }
     }
 

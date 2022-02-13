@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guias a la mano</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/ca7bc5fd05.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/estilo.css">
-
 </head>
 
 <body class="">
-    <main class="container-fluid vh-100">
+    <main class="container-fluid vh-100" id="contenido">
 
         <!-- Modal -->
         <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -112,7 +112,7 @@
                     </button>
                     <span class="ms-4 fs-5 fw-bold text-white">Opciones</span>
                 </div>
-                <div class="d-xl-block" id="menuOpciones">
+                <div class="d-xl-block  collapse" id="menuOpciones">
                     <div class="container d-xl-none d-md-flex justify-content-end py-2 align-items-center ">
                         <div class="input-group rounded">
                             <form action="" class="d-flex w-100">
@@ -144,9 +144,17 @@
                     </div>
                 </div>
             </aside>
-             <?php 
-                require_once($data["viewRequerida"]);
-             ?>
+            <section class="col-xl-10 col-sm-12 p-3 bg-violet-light">
+                <div class="informacion_dash w-100 d-flex justify-content-between align-items-center px-3 py-2">
+                    <span id="title-dashboard" class="p-2 text-white fw-bold fs-4"></span>
+                </div>
+                <div class="d-flex flex-wrap justify-content-around" id="contenidoDash" style="gap:10px;">
+
+
+
+
+                </div>
+            </section>
         </main>
         <footer class="bg-violet-dark row text-center" style="min-height: 100px">
             <div class="container p-4">
@@ -230,8 +238,8 @@
             <!-- Copyright -->
         </footer>
     </main>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
     <script src="./assets/js/app.js"></script>
-    <script src="https://kit.fontawesome.com/dc694244d4.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
