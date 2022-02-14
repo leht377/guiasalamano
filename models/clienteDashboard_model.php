@@ -4,11 +4,13 @@
         private $db;
         private $sitios;
         private $categorias;
+        private $clientes;
         public function __construct()
         {
             $this->db = connect::connection();
             $this->sitios = array();
             $this->categorias = array();
+            $this->clientes = array();
         }
 
 
@@ -41,6 +43,8 @@
 			}
 			return $this->sitios;
         }
+
+      
     }
 
 ?>

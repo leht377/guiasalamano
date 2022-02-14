@@ -12,7 +12,6 @@
           event.preventDefault();
           event.stopPropagation();
         }
-        console.log(!form.checkValidity());
         form.classList.add("was-validated");
       },
       false

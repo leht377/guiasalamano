@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,10 +83,10 @@
 
         <header class="bg-violet-dark row" style="height: 15%;">
             <div class="col-xl-4 col-md-6 d-flex justify-content-xl-start justify-content-center  align-items-center">
-                <div class="user-header">
+                <div class="user-header" onclick="getCategorias()">
                     <img src="https://i.pinimg.com/originals/91/32/e2/9132e28672cbbc5ec8c7ed793dd2c20e.jpg" class="img-fluid" alt="User Pic">
                 </div>
-                <h6 class="mx-3 mt-2 text-white fw-bold">Luis Hernández</h6>
+                <h6 class="mx-3 mt-2 text-white fw-bold"><?php echo $_SESSION['user']; ?> </h6>
             </div>
             <div class="col-xl-4 col-md-6 d-flex justify-content-center align-items-center ps-2 ">
                 <h3 class="text-white fw-bold">GUIAS A LA MANO</h3>
@@ -138,8 +137,8 @@
                         <h4 class="mt-4 mb-4 text-white fw-bold">Opciones usuario</h4>
                         <ul class="p-0" id="lista-destinos">
                             <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button"><i class="fas fa-history"></i><span class="ms-2">Historial</span></li>
-                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button"><i class="fas fa-cog"></i><span class="ms-2">Configurar perfil</span></li>
-                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button"><i class="fas fa-sign-out-alt"></i><span class="ms-2">Log out</span></li>
+                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button" onclick="showConfingProfile()"><i class="fas fa-cog"></i><span class="ms-2">Configurar perfil</span></li>
+                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button" onclick="logout()"><i class="fas fa-sign-out-alt"></i><span class="ms-2">Log out</span></li>
                         </ul>
                     </div>
                 </div>
@@ -148,9 +147,9 @@
                 <div class="informacion_dash w-100 d-flex justify-content-between align-items-center px-3 py-2">
                     <span id="title-dashboard" class="p-2 text-white fw-bold fs-4"></span>
                 </div>
-                <div class="d-flex flex-wrap justify-content-around" id="contenidoDash" style="gap:10px;">
+                <div class="d-flex flex-wrap justify-content-around align-items-center" id="contenidoDash" style="gap:10px;">
 
-
+                    
 
 
                 </div>
@@ -238,9 +237,10 @@
             <!-- Copyright -->
         </footer>
     </main>
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
-    <script src="./assets/js/app.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="./assets/js/jquery.js"></script>
+    <script src="./assets/js/app.js"></script>
 
 </body>
 

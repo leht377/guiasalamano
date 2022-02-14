@@ -41,7 +41,7 @@ class cliente_model{
 
 
 
-        public function createCredencials($id,$user,$password){
+        private function createCredencials($id,$user,$password){
 
            $sql = "INSERT INTO `guiasalamano`.`credenciales` (`id`, `user`, `password`) VALUES ('$id', '$user', '$password');";
  
@@ -72,7 +72,56 @@ class cliente_model{
 
         }
 
+        public function getInfoCliente($id){
+
+            $sql = "
+            SELECT cliente.nombres,cliente.apellidos,cliente.documento,cliente.celular,cliente.edad,cliente.email,
+            procedencia.nombre as procedencia ,tipodocumento.nombre as tipo_documento,credenciales.user,credenciales.password
+            FROM cliente,procedencia,tipodocumento,credenciales WHERE credenciales.id = cliente.documento AND
+                                                                      cliente.procedencia_id = procedencia.id AND
+                                                                      cliente.tipodocumento_id = tipodocumento.id AND
+                                                                      cliente.id ='$id';
+            ";
+
+
+            $res = $this->db->query($sql);
+            
+            if ($res === false) {
+                echo "<br> <p class='text-white'> SQL Error en registrar: " .$this->db->error."</p>";
+            }
+
+            while($row = $res->fetch_assoc())
+			{
+				$this->clientes[] = $row;
+                
+			}
+
+			return $this->clientes;
+
+        }
+
+        public function updateInformation($nombres,$apellidos,$celular,$edad,$email,$password,$documento,$id){
+            $sql = "UPDATE `cliente` SET `nombres` = '$nombres',`apellidos` = '$apellidos',`celular` = '$celular',`edad` = '$edad',`email` = '$email' WHERE (`id` = '$id');";
+            $res = $this->db->query($sql);
+
+            if ($res === false) {
+                echo " <p class='text-white'> SQL Error en credenciales: " .$this->db->error."</p>";
+                return false;
+            }
+
+            $sql2 ="UPDATE `credenciales` SET  `password` = '$password' WHERE (`id` = '$documento'); ";
+            $res2 = $this->db->query($sql2);
+
+           if ($res2 === false ) {
+                echo " <p class='text-white'> SQL Error en credenciales: " .$this->db->error."</p>";
+                return false;
+            }
+
+            return true;
+        }
+       
+
+        
+
        
     }
-
-?>

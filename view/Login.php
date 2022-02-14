@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/estilosform.css">
+    <script src="https://kit.fontawesome.com/ca7bc5fd05.js" crossorigin="anonymous"></script>
     <title>Login</title>
 </head>
 
@@ -41,14 +42,14 @@
                 <form action="index.php?c=login&a=validarCredenciales" method="POST" class = "needs-validation " novalidate id="form_login" autocomplete="off">
                     <div class="input-group mb-4 position-relative">
                         <input type="text" id="usernamelogin" class="form-control bg-transparent text-white fw-bold  ps-5" placeholder="Username" aria-label="Username"
-                            required>
+                            required name="user">
                         <div class="invalid-feedback">
                           El campo no pueda estar vacio
                         </div>
                         <i class="fas fa-user-tie position-absolute text-white position-icon-right" ></i>    
                     </div>
                     <div class="input-group mb-4 position-relative">
-                        <input type="password" id="passwordlogin" required class="form-control bg-transparent text-white fw-bold ps-5" placeholder="Password"
+                        <input type="password" id="passwordlogin" name="password" required class="form-control bg-transparent text-white fw-bold ps-5" placeholder="Password"
                             aria-describedby="basic-addon1">
                         <div class="invalid-feedback">
                             El campo no pueda estar vacio
@@ -68,9 +69,10 @@
     </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
 
-    
-    <script src="assets/js/validateform.js"></script>
-    <script src="https://kit.fontawesome.com/dc694244d4.js" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./assets/js/jquery.js"></script>  
+    <script src="./assets/js/login.js"></script>
+    <script src="./assets/js/validateform.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
