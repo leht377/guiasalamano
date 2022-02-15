@@ -15,10 +15,19 @@ use function PHPSTORM_META\map;
         }
 
         private function createSession($temp){
+            require_once("./models/cliente_model.php");
+            $cliente = new cliente_model();
             session_start();
             $temp = $temp [0];
+            $resul = $cliente->getInfoClienteSession($temp['id']);
+
             $_SESSION['user'] = $temp['user'] ;
-            $_SESSION['id'] = $temp['id'] ;
+            $_SESSION['documento'] = $temp['id'] ;
+            $_SESSION['nombres'] = $resul[0]['nombres']; 
+            $_SESSION['apellidos'] = $resul[0]['apellidos']; 
+            $_SESSION['id'] = $resul[0]['id']; 
+            $_SESSION['Rol'] = $resul[0]['Roles_id']; 
+            
         }
 
         public function validarCredenciales(){

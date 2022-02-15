@@ -8,7 +8,6 @@ function login(){
         url: $("#form_login").attr("action"),
         data: $("#form_login").serialize(),
         success: function (res) {
-          console.log(res);
           if (res) {
             Swal.fire({
               icon: "success",
@@ -20,7 +19,7 @@ function login(){
             });
             setTimeout(()=>{
                 window.location.href = "index.php?c=clienteDashboard";
-            },5000)
+            },1000)
             
         }else{
             Swal.fire({

@@ -1,27 +1,44 @@
 <?php
 
     class clienteDashboardController{
+        private $sitioFamosos;
+
         public function __construct() {
             require_once("./models/clienteDashboard_model.php");
             require_once("./models/cliente_model.php");
+            $this->sitioFamosos = array();
         }
 
         public function index(){
-            session_start();
+            session_start(); 
+            error_reporting(0);
             if($_SESSION["user"] != null || $_SESSION["user"] != "" ){
+                $dataRank ["sitios_famosos"] = $this->getSitiosFamosos();
                 require_once("./view/clienteDashboard.php");
             }else{
-                error_reporting(0);
+               
                 require_once("./view/noAutenticado.php");
                 die();
             }
         }
 
+        public function getSitiosFamosos(){
+            $dash = new clienteDashboard_model();
+            return $this->sitioFamosos = $dash->sitiosFamosos();
+        }
+
         public function viewCategorias(){
+            session_start(); 
+            error_reporting(0);
+            if($_SESSION["user"] != null || $_SESSION["user"] != "" ){
             $dash = new clienteDashboard_model();
             $dataCategorias = $dash->getCategorias(); 
             $dataJson = json_encode($dataCategorias);
             echo $dataJson;
+            }else{
+                require_once("./view/noAutenticado.php");
+                die();
+            }
 
         }
 

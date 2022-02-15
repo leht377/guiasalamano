@@ -8,7 +8,6 @@ $(document).ready(function () {
       opciones.classList.add("active-menu-opcion");
     });
   });
-
   getCategorias();
 });
 
@@ -131,10 +130,10 @@ function getGuias(id, nombre) {
   });
 }
 
-function showConfingProfile() {
+function showConfingProfile(id) {
   $.ajax({
     type: "GET",
-    url: "index.php?c=clienteDashboard&a=getInformationFormUser&id=9",
+    url: "index.php?c=clienteDashboard&a=getInformationFormUser&id="+id,
     beforeSend: function () {
       template = `
               <div class="spinner-border text-light" role="status">
@@ -148,111 +147,111 @@ function showConfingProfile() {
       template = "";
       var resultado = JSON.parse(response);
       resultado.forEach((resultado) => {
-        template += `
-          <form class="container-sm container-md  p-5 needs-validation" novalidate action="index.php?c=clienteDashboard&a=updateClientInformation&id=9" method="post" id="formConfigUs" autocomplete="off" style="width: 800px;">
-                                  <section class="row">
-          
-                                      <div class="col-sm-6 col-md-4">
-                                          <div class="form-floating-sm mb-3 ">
-                                              <input type="text" class="form-control bg-transparent text-white" value="${resultado["nombres"]}" placeholder="Nombres" id="nombres_cli" name="nombres_cli" required>
-                                              <div class="invalid-feedback">
-                                                  El campo no pueda estar vacio
-                                              </div>
-                                          </div>
-                                      </div>
-          
-                                      <div class="col-sm-6 col-md-4">
-                                          <div class="form-floating-sm mb-3 ">
-                                              <input type="text" class="form-control bg-transparent text-white" placeholder="Apellidos" value="${resultado["apellidos"]}" id="apellidos_cli" name="apellidos_cli" required>
-                                              <div class="invalid-feedback">
-                                                  El campo no pueda estar vacio
-                                              </div>
-                                          </div>
-                                      </div>
-          
-                                      <div class="col-sm-6 col-md-4  mb-3">
-                                          <select class="form-select form-select bg-transparent text-white" disabled aria-label=".form-select-sm example" id="tDocumento_cli" name="tDocumento_cli" required>
-                                              <option class="text-dark" value="">${resultado["tipo_documento"]}</option>
-          
-                                          </select>
-                                          <div class="invalid-feedback">
-                                              Seleccione una opcion
-                                          </div>
-                                      </div>
-          
-                                      <div class="col-sm-6 col-md-4">
-                                          <div class="form-floating-sm mb-3 ">
-                                              <input type="number" class="form-control bg-transparent text-white"  value="${resultado["documento"]}"  placeholder="Cedula" id="cedula_cli" readonly name="cedula_cli" required>
-                                              <div class="invalid-feedback">
-                                                  El campo no pueda estar vacio
-                                              </div>
-                                          </div>
-                                      </div>
-          
-                                      <div class="col-sm-6 col-md-4">
-                                          <div class="form-floating-sm mb-3 ">
-                                              <input type="number" class="form-control bg-transparent text-white" placeholder="Celular"  value="${resultado["celular"]}" id="celular_cli" name="celular_cli" required>
-                                              <div class="invalid-feedback">
-                                                  El campo no pueda estar vacio
-                                              </div>
-                                          </div>
-                                      </div>
-          
-                                      <div class="col-sm-6 col-md-4">
-                                          <div class="form-floating-sm mb-3 ">
-                                              <input type="number" class="form-control bg-transparent text-white"  value="${resultado["edad"]}" placeholder="Edad" id="edad_cli" name="edad_cli" required>
-                                              <div class="invalid-feedback">
-                                                  El campo no pueda estar vacio
-                                              </div>
-                                          </div>
-                                      </div>
-          
-                                      <div class="col-sm-12">
-                                          <div class="form-floating-sm mb-3 ">
-                                              <input type="email" class="form-control bg-transparent text-white" placeholder="Email"  value="${resultado["email"]}" id="email_cli" name="email_cli" required>
-                                              <div class="invalid-feedback">
-                                                  El campo no pueda estar vacio
-                                              </div>
-                                          </div>
-                                      </div>
-          
-                                      <div class="col-sm-6">
-                                          <div class="form-floating-sm mb-3 ">
-                                              <input type="text" class="form-control bg-transparent text-white" placeholder="Usuario"  value="${resultado["user"]}" id="usuario_cli" name="usuario_cli" required>
-                                              <div class="invalid-feedback">
-                                                  El campo no pueda estar vacio
-                                              </div>
-                                          </div>
-                                      </div>
-          
-                                      <div class="col-sm-6">
-                                          <div class="form-floating-sm mb-3 position-relative ">
-                                              <input type="password" class="form-control bg-transparent text-white" placeholder="Contraseña"   value="${resultado["password"]}" id="password_cli" name="password_cli" required>
-                                              <div class="invalid-feedback">
-                                                  El campo no pueda estar vacio
-                                              </div>
-          
-                                          </div>
-                                      </div>
-          
-                                      <div class="col-sm-12">
-                                          <select class="form-select form-select bg-transparent text-white" aria-label=".form-select-sm example"  disabled name="procedencia" required>
-                                              <option class="text-dark" value="">${resultado["procedencia"]}</option>
-          
-                                          </select>
-                                          <div class="invalid-feedback">
-                                              Seleccione una opcion
-                                          </div>
-                                      </div>
-          
-                                  </section>
-                                  <button type="submit" class="btn bg-yellow text-black fw-bold mt-4 ml-auto ms-auto" >Guardar cambios</button>
-                              </form>                
-                  `;
+        template = ` 
+        <form class='container-sm container-md p-5 needs-validation' novalidate action='index.php?c=clienteDashboard&a=updateClientInformation&id=${id}' method='post' id='formConfigUs' autocomplete='off' style='width: 800px;justify-self: start;'>
+               <section class="row">
+                   <div class="col-sm-6 col-md-4">
+                       <div class="form-floating-sm mb-3 ">
+                           <input type="text" class="form-control bg-transparent text-white" value="${resultado["nombres"]}" placeholder="Nombres" id="nombres_cli" name="nombres_cli" required>
+                           <div class="invalid-feedback">
+                               El campo no pueda estar vacio
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="col-sm-6 col-md-4">
+                       <div class="form-floating-sm mb-3 ">
+                           <input type="text" class="form-control bg-transparent text-white" placeholder="Apellidos" value="${resultado["apellidos"]}" id="apellidos_cli" name="apellidos_cli" required>
+                           <div class="invalid-feedback">
+                               El campo no pueda estar vacio
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="col-sm-6 col-md-4  mb-3">
+                       <select class="form-select form-select bg-transparent text-white" disabled aria-label=".form-select-sm example" id="tDocumento_cli" name="tDocumento_cli" required>
+                           <option class="text-dark" value="">${resultado["tipo_documento"]}</option>
+
+                       </select>
+                       <div class="invalid-feedback">
+                           Seleccione una opcion
+                       </div>
+                   </div>
+
+                   <div class="col-sm-6 col-md-4">
+                       <div class="form-floating-sm mb-3 ">
+                           <input type="number" class="form-control bg-transparent text-white"  value="${resultado["documento"]}"  placeholder="Cedula" id="cedula_cli" readonly name="cedula_cli" required>
+                           <div class="invalid-feedback">
+                               El campo no pueda estar vacio
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="col-sm-6 col-md-4">
+                       <div class="form-floating-sm mb-3 ">
+                           <input type="number" class="form-control bg-transparent text-white" placeholder="Celular"  value="${resultado["celular"]}" id="celular_cli" name="celular_cli" required>
+                           <div class="invalid-feedback">
+                               El campo no pueda estar vacio
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="col-sm-6 col-md-4">
+                       <div class="form-floating-sm mb-3 ">
+                           <input type="number" class="form-control bg-transparent text-white"  value="${resultado["edad"]}" placeholder="Edad" id="edad_cli" name="edad_cli" required>
+                           <div class="invalid-feedback">
+                               El campo no pueda estar vacio
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="col-sm-12">
+                       <div class="form-floating-sm mb-3 ">
+                           <input type="email" class="form-control bg-transparent text-white" placeholder="Email"  value="${resultado["email"]}" id="email_cli" name="email_cli" required>
+                           <div class="invalid-feedback">
+                               El campo no pueda estar vacio
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="col-sm-6">
+                       <div class="form-floating-sm mb-3 ">
+                           <input type="text" class="form-control bg-transparent text-white" placeholder="Usuario"  value="${resultado["user"]}" id="usuario_cli" name="usuario_cli" required>
+                           <div class="invalid-feedback">
+                               El campo no pueda estar vacio
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="col-sm-6">
+                       <div class="form-floating-sm mb-3 position-relative ">
+                           <input type="password" class="form-control bg-transparent text-white" placeholder="Contraseña"   value="${resultado["password"]}" id="password_cli" name="password_cli" required>
+                           <div class="invalid-feedback">
+                               El campo no pueda estar vacio
+                           </div>
+
+                       </div>
+                   </div>
+
+                   <div class="col-sm-12">
+                       <select class="form-select form-select bg-transparent text-white" aria-label=".form-select-sm example"  disabled name="procedencia" required>
+                           <option class="text-dark" value="">${resultado["procedencia"]}</option>
+
+                       </select>
+                       <div class="invalid-feedback">
+                           Seleccione una opcion
+                       </div>
+                   </div>
+
+               </section>
+               <button type="submit" class="btn bg-yellow text-black fw-bold mt-4 ml-auto ms-auto" >Guardar cambios</button>
+           </form>          
+            `
       });
       $("#contenidoDash").html(template);
-
+      document.getElementById("title-dashboard").textContent = "Configuracion del usuario";
       $("#formConfigUs").submit(function (ev) {
+        console.log($("#formConfigUs").attr("action"));
         $.ajax({
           type: "POST",
           url: $("#formConfigUs").attr("action"),

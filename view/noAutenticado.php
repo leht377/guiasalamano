@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1>Autenticate pendejo</h1>
+    <a href="index.php">A ver dame click !!!</a>
 </body>
 </html>

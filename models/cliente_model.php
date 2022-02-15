@@ -6,7 +6,7 @@ class cliente_model{
         private $db;
         private $clientes;
         private $procedencia;
-
+        private $clientes2;
         public function __construct(){
             $this ->db = connect::connection();
             $this->clientes = array();
@@ -121,7 +121,16 @@ class cliente_model{
         }
        
 
-        
+        public function getInfoClienteSession($id){
+            $sql = "SELECT `nombres`,`id`,`apellidos`,`Roles_id` FROM `cliente` WHERE `documento` = '$id';";
+            $res = $this->db->query($sql);
+            while($row = $res->fetch_assoc())
+			{
+				$this->clientes2[] = $row;
+                
+			}
+            return $this-> clientes2;
+        }
 
        
     }

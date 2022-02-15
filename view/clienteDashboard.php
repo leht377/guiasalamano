@@ -86,7 +86,7 @@
                 <div class="user-header" onclick="getCategorias()">
                     <img src="https://i.pinimg.com/originals/91/32/e2/9132e28672cbbc5ec8c7ed793dd2c20e.jpg" class="img-fluid" alt="User Pic">
                 </div>
-                <h6 class="mx-3 mt-2 text-white fw-bold"><?php echo $_SESSION['user']; ?> </h6>
+                <h6 class="mx-3 mt-2 text-white fw-bold" ><?php echo $_SESSION['nombres'].' '. $_SESSION['apellidos'] ; ?> </h6>
             </div>
             <div class="col-xl-4 col-md-6 d-flex justify-content-center align-items-center ps-2 ">
                 <h3 class="text-white fw-bold">GUIAS A LA MANO</h3>
@@ -123,21 +123,21 @@
                         </div>
                     </div>
                     <div class="container">
-                        <h4 class="mt-4 mb-4 text-white fw-bold">Destinos Famosos</h4>
+                        <h4 class="mt-4 mb-4 text-white fw-bold" >Destinos Famosos</h4>
                         <ul class="s p-0" id="lista-destinos">
-                            <li class="list-unstyled p-2 text-white rounded fw-bold active-menu-opcion opciones-menu" role="button">La
-                                Bocana</li>
-                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button">La
-                                torre Eiffel</li>
-                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button">Caño
-                                Cristales</li>
+                            <?php
+                                foreach ($dataRank["sitios_famosos"] as $sitios) {
+                                    // echo "<option class ='text-dark' value=" . $dato["id"] . ">" . $dato["nombre"] . "</option>";
+                                    echo "<li class='list-unstyled p-2 text-white rounded fw-bold  opciones-menu' role='button' onclick = 'getGuias(".$sitios["id"].",null)' >".$sitios["nombre"]."</li>";
+                                }
+                            ?>
                         </ul>
                     </div>
                     <div class="container">
                         <h4 class="mt-4 mb-4 text-white fw-bold">Opciones usuario</h4>
                         <ul class="p-0" id="lista-destinos">
                             <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button"><i class="fas fa-history"></i><span class="ms-2">Historial</span></li>
-                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button" onclick="showConfingProfile()"><i class="fas fa-cog"></i><span class="ms-2">Configurar perfil</span></li>
+                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button" onclick="showConfingProfile(<?php echo $_SESSION['id']; ?>)"><i class="fas fa-cog"></i><span class="ms-2">Configurar perfil</span></li>
                             <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button" onclick="logout()"><i class="fas fa-sign-out-alt"></i><span class="ms-2">Log out</span></li>
                         </ul>
                     </div>
@@ -149,7 +149,7 @@
                 </div>
                 <div class="d-flex flex-wrap justify-content-around align-items-center" id="contenidoDash" style="gap:10px;">
 
-                    
+             
 
 
                 </div>
