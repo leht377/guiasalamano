@@ -8,7 +8,11 @@ function login(){
         url: $("#form_login").attr("action"),
         data: $("#form_login").serialize(),
         success: function (res) {
-          if (res) {
+        console.log(res);
+        let resultado = JSON.parse(res);
+        console.log(resultado[0]["status"]);
+
+          if (resultado[0]["status"]) {
             Swal.fire({
               icon: "success",
               title: "Autenticación",
@@ -18,7 +22,12 @@ function login(){
               timer: 3000
             });
             setTimeout(()=>{
+              if(resultado[0]["rol"] === "1"){
                 window.location.href = "index.php?c=clienteDashboard";
+
+              }else if(resultado[0]["rol"] === "2") {
+                window.location.href = "index.php?c=guiaDashboard";
+              }
             },1000)
             
         }else{

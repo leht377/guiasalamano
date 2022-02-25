@@ -8,7 +8,7 @@
         }
 
         public function autenticar($user, $password){
-            $sql = "SELECT `user`,`id` FROM credenciales WHERE `user` = '$user' and `password` = '$password'; ";
+            $sql = "SELECT `user`,`id`,`Rol_id` FROM credenciales WHERE `user` = '$user' and `password` = '$password'; ";
             $result = $this->db->query($sql);
            
 

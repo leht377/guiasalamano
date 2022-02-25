@@ -93,7 +93,7 @@
           </div>
         </div>
 
-        <div class="col-6">
+        <div class="col-6 col-md-12 col-sm-12">
           <div class="form-floating-sm mb-3">
             <select class="form-select bg-transparent text-white" aria-label="Floating label select example" name="genero_guia" required>
               <option value="">Genero...</option>
@@ -103,12 +103,12 @@
             </select>
           </div>
         </div>
-
+<!-- 
         <div class="col-6 col-sm-12 col-md-6 ">
           <div class="mb-3">
             <input class="form-control form-control" id="formFileSm" type="file" name="file"> 
           </div>
-        </div>
+        </div> -->
 
         <div class="col-xl-6 col-md-6 col-sm-12">
           <div class="form-floating-sm mb-3">
@@ -119,7 +119,7 @@
           </div>
         </div>
 
-        <div class="col-sm-6">
+        <div class=" col-6 col-md-12 col-sm-12 col-xl-6">
           <div class="form-floating-sm mb-3 position-relative ">
             <input type="password" class="form-control bg-transparent text-white" placeholder="Contraseña" id="password_guia" name="password_guia" required>
             <div class="invalid-feedback">
@@ -143,6 +143,8 @@
     </form>
   </main>
 
+  <script src="./assets/js/jquery.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./assets/js/validateform.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

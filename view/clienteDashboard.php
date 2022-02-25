@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -86,7 +87,7 @@
                 <div class="user-header" onclick="getCategorias()">
                     <img src="https://i.pinimg.com/originals/91/32/e2/9132e28672cbbc5ec8c7ed793dd2c20e.jpg" class="img-fluid" alt="User Pic">
                 </div>
-                <h6 class="mx-3 mt-2 text-white fw-bold" ><?php echo $_SESSION['nombres'].' '. $_SESSION['apellidos'] ; ?> </h6>
+                <h6 class="mx-3 mt-2 text-white fw-bold"><?php echo $_SESSION['nombres'] . ' ' . $_SESSION['apellidos']; ?> </h6>
             </div>
             <div class="col-xl-4 col-md-6 d-flex justify-content-center align-items-center ps-2 ">
                 <h3 class="text-white fw-bold">GUIAS A LA MANO</h3>
@@ -123,13 +124,13 @@
                         </div>
                     </div>
                     <div class="container">
-                        <h4 class="mt-4 mb-4 text-white fw-bold" >Destinos Famosos</h4>
+                        <h4 class="mt-4 mb-4 text-white fw-bold">Destinos Famosos</h4>
                         <ul class="s p-0" id="lista-destinos">
                             <?php
-                                foreach ($dataRank["sitios_famosos"] as $sitios) {
-                                    // echo "<option class ='text-dark' value=" . $dato["id"] . ">" . $dato["nombre"] . "</option>";
-                                    echo "<li class='list-unstyled p-2 text-white rounded fw-bold  opciones-menu' role='button' onclick = 'getGuias(".$sitios["id"].",null)' >".$sitios["nombre"]."</li>";
-                                }
+                            foreach ($dataRank["sitios_famosos"] as $sitios) {
+                                // echo "<option class ='text-dark' value=" . $dato["id"] . ">" . $dato["nombre"] . "</option>";
+                                echo "<li class='list-unstyled p-2 text-white rounded fw-bold  opciones-menu' role='button' onclick = 'getGuias(" . $sitios["id"] . ",null)' >" . $sitios["nombre"] . "</li>";
+                            }
                             ?>
                         </ul>
                     </div>
@@ -148,9 +149,6 @@
                     <span id="title-dashboard" class="p-2 text-white fw-bold fs-4"></span>
                 </div>
                 <div class="d-flex flex-wrap justify-content-around align-items-center" id="contenidoDash" style="gap:10px;">
-
-             
-
 
                 </div>
             </section>

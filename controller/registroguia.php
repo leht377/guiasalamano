@@ -2,12 +2,12 @@
     class registroguiaController{
 
         public function __construct() {
-            require_once("./models/registroguia_model.php");
+            require_once("./models/guia_model.php");
         }
 
         public function index(){
             
-            $guia = new registroguia_model();
+            $guia = new guia_model();
             $data["tipo_documento"] = $guia->getinfotipodocumento();
             require_once("./view/registroGuia.php");
 
@@ -27,15 +27,33 @@
             $genero_guia = $_POST["genero_guia"];
             $usuario_guia = $_POST["usuario_guia"];
             $password_guia = $_POST["password_guia"];
-            
-            [$ruta,$estado,$msg] = $this-> upload();
-            
-            
-            $guia = new registroguia_model();
-            $guia-> registrar( $nombres_guia,$apellidos_guia, $documento_guia, $celular_guia,$edad_guia, $email_guia ,$direccion_guia, $genero_guia,$ruta, $tipodocumento_guia,  $usuario_guia,$password_guia);
 
-            header('Location:index.php');
-            die();
+            switch ($genero_guia) {
+                case 1:
+                    $rutaAvatar = "./recursos_img_usuarios/avatarhombre.jpg";
+                    break;
+                case 2:
+                    $rutaAvatar = "./recursos_img_usuarios/avatarmujer.jpg";
+                    break;
+                case 'otro':
+                    $rutaAvatar = "./recursos_img_usuarios/avatarmujer.jpg";
+                    break;
+                default:
+                    $rutaAvatar = "";
+                    break;
+            }
+
+            // [$ruta,$est,$msg] = $this-> upload();
+            
+            
+            $guia = new guia_model();
+            $estado = $guia-> registrar( $nombres_guia,$apellidos_guia, $documento_guia, $celular_guia,$edad_guia, $email_guia ,$direccion_guia, $genero_guia,$rutaAvatar, $tipodocumento_guia,$usuario_guia,$password_guia);
+
+            echo $estado;
+
+    
+       
+               
 
         }
 
@@ -68,14 +86,14 @@
                         if(move_uploaded_file($_FILES["file"]["tmp_name"], $archivo)){
                             return [$archivo, true,"Se subio correctamente"];
                         }else{
-                            return [null,false,"Hubo un error en la subida del archivo"];
+                            return ["",false,"Hubo un error en la subida del archivo"];
                         }
                     }else{
-                        return [null,false,"Solo se admiten archivos jpg/jpeg"];
+                        return ["",false,"Solo se admiten archivos jpg/jpeg"];
                     }
                 }
             }else{
-                return [null,false,"El documento no es una image"];
+                return ["",false,"El documento no es una image"];
             }
         }
 

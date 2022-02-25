@@ -27,10 +27,9 @@
             $procedencia_id = (int) $_POST["procedencia"];
            
             $cliente = new cliente_model();
-            $cliente->registrar_cliente($nombres, $apellidos, $documento,$celular, $edad,$email, $procedencia_id, $tipdocumento_id, $user, $password);
-
-            header('Location:index.php');
-            die();
+            $estado = $cliente->registrar_cliente($nombres, $apellidos, $documento,$celular, $edad,$email, $procedencia_id, $tipdocumento_id, $user, $password);
+            echo $estado;
+            
 
         }
     }

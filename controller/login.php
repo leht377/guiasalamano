@@ -5,6 +5,8 @@ use function PHPSTORM_META\map;
     class loginController{
 
         public function __construct(){
+            session_start();
+            session_destroy();
             require_once("./models/login_model.php");
         }
 
@@ -14,19 +16,36 @@ use function PHPSTORM_META\map;
             
         }
 
-        private function createSession($temp){
-            require_once("./models/cliente_model.php");
-            $cliente = new cliente_model();
+        private function createSession($credencial){
+           
             session_start();
-            $temp = $temp [0];
-            $resul = $cliente->getInfoClienteSession($temp['id']);
+            $rolCliente = 1;
+            $rolGuia = 2;
 
-            $_SESSION['user'] = $temp['user'] ;
-            $_SESSION['documento'] = $temp['id'] ;
-            $_SESSION['nombres'] = $resul[0]['nombres']; 
-            $_SESSION['apellidos'] = $resul[0]['apellidos']; 
-            $_SESSION['id'] = $resul[0]['id']; 
-            $_SESSION['Rol'] = $resul[0]['Roles_id']; 
+            $credencial = $credencial [0];
+           
+            $_SESSION['user'] = $credencial['user'] ;
+            $_SESSION['Rol'] = $credencial['Rol_id'];
+
+            if($credencial['Rol_id'] == $rolCliente){
+
+                require_once("./models/cliente_model.php");
+                $cliente = new cliente_model();
+                $resul = $cliente->getInfoClienteSession($credencial['id']);
+                $_SESSION['nombres'] = $resul[0]['nombres']; 
+                $_SESSION['documento'] = $resul[0]['documento'] ;
+                $_SESSION['apellidos'] = $resul[0]['apellidos']; 
+                $_SESSION['id'] = $resul[0]['id']; 
+
+            }else if($credencial['Rol_id'] == $rolGuia){
+                require_once("./models/guia_model.php");
+                $guia = new guia_model();
+                $resul = $guia->getInfoGuiaSession($credencial['id']);
+                $_SESSION['nombres'] = $resul[0]['nombres']; 
+                $_SESSION['apellidos'] = $resul[0]['apellidos']; 
+                $_SESSION['id'] = $resul[0]['id'];
+            }
+          
             
         }
 
@@ -38,10 +57,13 @@ use function PHPSTORM_META\map;
             
             if($dataUser != false){
                 $this->createSession($dataUser);
-                echo  true;
+                $sub [] = array ("status" => true , "rol" => $_SESSION['Rol']);
+                echo json_encode($sub);
+            }else{
+                $items [] = array ("status" => false);
+                echo json_encode($items);
             }
             
-            echo false;
         }
     }
 ?>
