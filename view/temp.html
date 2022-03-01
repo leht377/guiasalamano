@@ -8,85 +8,15 @@
     <title>Guias a la mano</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/ca7bc5fd05.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./assets/css/estilo.css">
-
+    <link rel="stylesheet" href="/assets/css/estilo.css">
 </head>
 
 <body class="">
-
     <main class="container-fluid vh-100" id="contenido">
-
-        <!-- Modal -->
-        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content" id="modal-info-guia">
-            <div class="modal-header bg-violet-dark d-flex justify-content-center border-0">
-                <h3 class="text-white center">INFORMACIÓN DE GUÍA</h3>
-            </div>
-            <div class="modal-body py-0 bg-violet-light">
-                <div class="row h-100">
-                    <div class="col-7 d-flex justify-content-start align-items-center">
-                        <div class="bg-violet-dark d-flex w-100 rounded align-items-center overflow-hidden ">
-                            <div class="card_info">
-                                <div class="img1_info"><img src="static/image/beach-gcc1d81d8c_1920.jpg" alt="">
-                                </div>
-                                <div class="img2_info"><img src="static/image/girl-gcd6f4fcad_640.jpg" alt="">
-                                </div>
-                                <div class="main-text_info">
-                                    <h2>Person One</h2>
-                                    <div>
-                                        <p>Calificación</p>
-                                        <span class="start"></span>
-                                        <span class="start"></span>
-                                        <span class="start"></span>
-                                        <span class="start"></span>
-                                        <span class="start"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ms-3 h-100 d-flex">
-                                <div>
-                                    <div class="d-flex">
-                                        <span class="text-white fw-bold p-2 ">Nombre completo : </span>
-                                        <span class="text-white fw-bold p-2">Carlos Marios</span>
-
-                                    </div>
-                                    <div class="d-flex mt-2">
-                                        <span class="text-white fw-bold p-2 ">Numero de clientes : </span>
-                                        <span class="text-white fw-bold p-2">42</span>
-                                    </div>
-                                    <div class="d-flex mt-2">
-                                        <span class="text-white fw-bold p-2 ">Numero de telefono : </span>
-                                        <span class="text-white fw-bold p-2">322000022</span>
-                                    </div>
-                                    <div class="d-flex mt-2">
-                                        <span class="text-white fw-bold p-2">Numero de clientes :</span>
-                                        <span class="text-white fw-bold p-2 ">42</span>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="col-5 d-flex justify-content-center align-items-center">
-                        <div class="border w-100" style="height:  290px;"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer bg-violet-dark d-flex justify-content-start border-0">
-                <button class="fw-bold px-3 py-2 border-0 rounded" style="background-color:#FAD318;">Solicitar</button>
-                <button class="fw-bold px-3 py-2 border-0 rounded" style="background-color:#FAD318;" data-bs-dismiss="modal">Regresar</button>
-            </div>
-        </div>
-    </div>
-</div> -->
-        <!-- Fin modal -->
 
         <header class="bg-violet-dark row" style="height: 15%;">
             <div class="col-xl-4 col-md-6 d-flex justify-content-xl-start justify-content-center  align-items-center">
-                <div class="user-header" onclick="">
+                <div class="user-header" onclick="getCategorias()">
                     <img src="https://i.pinimg.com/originals/91/32/e2/9132e28672cbbc5ec8c7ed793dd2c20e.jpg" class="img-fluid" alt="User Pic">
                 </div>
                 <h6 class="mx-3 mt-2 text-white fw-bold"><?php echo $_SESSION['nombres'] . ' ' . $_SESSION['apellidos']; ?> </h6>
@@ -114,7 +44,7 @@
                     </button>
                     <span class="ms-4 fs-5 fw-bold text-white">Opciones</span>
                 </div>
-                <div class="d-xl-block  collapse" id="menuOpciones">
+                <div class="d-xl-block collapse" id="menuOpciones">
                     <div class="container d-xl-none d-md-flex justify-content-end py-2 align-items-center ">
                         <div class="input-group rounded">
                             <form action="" class="d-flex w-100">
@@ -126,61 +56,28 @@
                         </div>
                     </div>
                     <div class="container">
-                        <h4 class="mt-4 mb-4 text-white fw-bold">Guia</h4>
-                        <ul class=" p-0" id="lista-destinos">
-                            <li class='list-unstyled p-2 text-white rounded fw-bold  opciones-menu active-menu-opcion' role='button'> Clientes solicitando</li>
-                            <li class='list-unstyled p-2 text-white rounded fw-bold  opciones-menu' role='button' id="btnPostular" onclick="getCategorias()"> Postular destino</li>
+                        <h4 class="mt-4 mb-4 text-white fw-bold">Destinos Famosos</h4>
+                        <ul class="s p-0" id="lista-destinos">
+                         
                         </ul>
                     </div>
                     <div class="container">
                         <h4 class="mt-4 mb-4 text-white fw-bold">Opciones usuario</h4>
                         <ul class="p-0" id="lista-destinos">
+                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button"><i class="fas fa-history"></i><span class="ms-2">Historial</span></li>
                             <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button" onclick=""><i class="fas fa-cog"></i><span class="ms-2">Configurar perfil</span></li>
-                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button" id="logout" onclick="logout()"><i class="fas fa-sign-out-alt"></i><span class="ms-2">Log out</span></li>
+                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button" onclick="logout()"><i class="fas fa-sign-out-alt"></i><span class="ms-2">Log out</span></li>
                         </ul>
                     </div>
                 </div>
             </aside>
             <section class="col-xl-10 col-sm-12 p-3 bg-violet-light">
                 <div class="informacion_dash w-100 d-flex justify-content-between align-items-center px-3 py-2">
-                    <span id="title-dashboard" class="ps-2 text-white fw-bold fs-4"></span>
+                    <span id="title-dashboard" class="p-2 text-white fw-bold fs-4"></span>
                 </div>
                 <div class="d-flex flex-wrap justify-content-around align-items-center" id="contenidoDash" style="gap:10px;">
-                    <div class="container rounded mt-2 bg-violet-light p-md-5">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Destino</th>
-                                        <th scope="col">Fecha</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="bg-blue">
-                                        <td class="pt-2"> <img class="img-user-table rounded-circle" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-                                            <div class="pl-lg-5 pl-md-3 pl-1 name">Emilia Kollette</div>
-                                        </td>
-                                        <td class="pt-3 mt-1">25 Sep 2020</td>
-                                        <td class="pt-3">11:00 AM</td>
-                                        <!-- <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
-                                        <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td> -->
-                                    </tr>
-                                    <tr id="spacing-row">
-                                        <td></td>
-                                    </tr>
-                                    <tr class="bg-blue">
-                                        <td class="pt-2"> <img class="img-user-table rounded-circle" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-                                            <div class="pl-lg-5 pl-md-3 pl-1 name">Emilia Kollette</div>
-                                        </td>
-                                        <td class="pt-3 mt-1">25 Sep 2020</td>
-                                        <td class="pt-3">11:00 AM</td>
-                                        <!-- <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
-                                        <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td> -->
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="container-fluid bg-black p-2">
+                        
                     </div>
                 </div>
             </section>
@@ -269,8 +166,8 @@
     </main>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="./assets/js/jquery.js"></script>
-    <script src="./assets/js/dashboardGuia.js"></script>
+    <script src="/assets/js/jquery.js"></script>
+    
 
 </body>
 

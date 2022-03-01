@@ -37,6 +37,7 @@ $(document).ready(function () {
 });
 
 function getCategorias() {
+ 
   $.ajax({
     type: "GET",
     url: "index.php?c=clienteDashboard&a=viewCategorias",
@@ -53,6 +54,7 @@ function getCategorias() {
     success: function (response) {
       template = "";
       var resultado = JSON.parse(response);
+      console.log(response);
       resultado.forEach((categoria) => {
         template += `
                 <div href = "#/sitios" class="card text-decoration-none text-white" style="width: 18rem;" role="button" onclick="getSitios(${categoria.id})">

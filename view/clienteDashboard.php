@@ -112,7 +112,7 @@
                     </button>
                     <span class="ms-4 fs-5 fw-bold text-white">Opciones</span>
                 </div>
-                <div class="d-xl-block  collapse" id="menuOpciones">
+                <div class="d-xl-block collapse" id="menuOpciones">
                     <div class="container d-xl-none d-md-flex justify-content-end py-2 align-items-center ">
                         <div class="input-group rounded">
                             <form action="" class="d-flex w-100">

@@ -119,6 +119,16 @@
 			return $this->guias;
         }
 
+        public function postularSitio($id_sitio, $id_guia){
+            $sql = "UPDATE `guia` SET `sitiopostulado` = $id_sitio WHERE `id` = $id_guia" ;
+            $res = $this->db->query($sql);
+            if ($res === false) {
+                // echo " <p class='text-white'> SQL Error en credenciales: " . $this->db->error . "</p>";
+                return "false";
+            }
+            return "true";
+        }
+
     }
 
 ?>
