@@ -129,6 +129,16 @@
             return "true";
         }
 
+        public function getGuiabyid($id){
+            $sql = "SELECT id as id_guia,nombres as nombre_guia ,foto as foto_guia, apellidos as apellido_guia FROM guia WHERE id = '$id';";
+			$resultado = $this->db->query($sql);
+            while($row = $resultado->fetch_assoc())
+			{
+				$this->guias[] = $row;
+			}
+			return $this->guias;
+        }
+
     }
 
 ?>

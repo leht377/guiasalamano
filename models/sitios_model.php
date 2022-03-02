@@ -20,8 +20,8 @@
 			return $this->sitios;
         }   
 
-        public function getSitios($id){
-            $sql = "SELECT id, nombre,img,descripcion FROM sitio WHERE categoria_id = '$id';";
+        public function getSitiosbyCategoria($id){
+            $sql = "SELECT id, nombre,img,descripcion,precio FROM sitio WHERE categoria_id = '$id';";
 			$resultado = $this->db->query($sql);
             while($row = $resultado->fetch_assoc())
 			{
@@ -29,6 +29,18 @@
 			}
 			return $this->sitios;
         }
+
+        public function getSitiosbyId($id){
+            $sql = "SELECT id, nombre,img,precio FROM sitio WHERE id = '$id';";
+			$resultado = $this->db->query($sql);
+            while($row = $resultado->fetch_assoc())
+			{
+				$this->sitios[] = $row;
+			}
+			return $this->sitios;
+        }
+      
+        
 
     }
 ?>
