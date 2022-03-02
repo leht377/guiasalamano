@@ -318,4 +318,7 @@ thead {
 #spacing-row {
     height: 10px
 }
+#autenti{
+    background: url("./image/noautenticado.png");
 
+}
