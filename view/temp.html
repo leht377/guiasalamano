@@ -76,8 +76,80 @@
                     <span id="title-dashboard" class="p-2 text-white fw-bold fs-4"></span>
                 </div>
                 <div class="d-flex flex-wrap justify-content-around align-items-center" id="contenidoDash" style="gap:10px;">
-                    <div class="container-fluid bg-black p-2">
-                        
+                    <div class="row container-fluid p-2 py-3 rounded">
+                            <div class="col-3 d-flex flex-column justify-content-start ">
+                                <div class="card">
+                                    <div class="img1"><img src="https://upload.wikimedia.org/wikipedia/commons/5/53/La_Bocana_Port.jpg" >
+                                    </div>
+                                    <div class="img2"><img src='${Guias.foto}' >
+                                    </div>
+                                    <div class="main-text">
+                                        <h2>${Guias.nombres}</h2>
+                                        <p>Precio: xxxxx</p>
+                                        <p>Distancia: xxxxxx</p>
+                                        <div>
+                                            <p>Calificacion</p>
+                                            <span class="start"></span>
+                                            <span class="start"></span>
+                                            <span class="start"></span>
+                                            <span class="start"></span>
+                                            <span class="start"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <button class="btn bg-yellow text-dark fw-bold d-block w-100" type="submit">Contratar</button>
+                                    <button class="btn bg-yellow text-dark fw-bold mt-2 d-block w-100">Cancelar</button>
+                                </div>
+                            </div>
+                            <div class="col-9 ">
+                                <header class="w-100" style="height: 200px;">
+                                    <img class="w-100 h-100 rounded" style="object-fit: cover;" src="https://static.wixstatic.com/media/dbc620_24dc957cf3bf4258b0468a94770b4065~mv2.png/v1/fill/w_1000,h_400,al_c,usm_0.66_1.00_0.01/dbc620_24dc957cf3bf4258b0468a94770b4065~mv2.png" >
+                                </header>
+                                <section class=" mt-4 p-2">
+                                    <form action="" class="row">
+                                        <h3 class="fw-bold text-white">Informacion del Guia</h3>
+                                        <div class="col-6">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-text text-white bg-transparent fw-bold" id="inputGroup-sizing-sm">Nombres</span>
+                                                <input type="text" class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                              </div>
+                                              
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-text text-white bg-transparent fw-bold" id="inputGroup-sizing-sm">Apellidos</span>
+                                                <input type="text" class="form-control bg-transparent" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                              </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-text text-white bg-transparent fw-bold" id="inputGroup-sizing-sm">Destino</span>
+                                                <input type="text" class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                              </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-text text-white bg-transparent fw-bold" id="inputGroup-sizing-sm">Precio</span>
+                                                <input type="number" class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                              </div>
+                                        </div>
+                                        <h3 class="fw-bold text-white">Seleccionar horario </h3>
+                                        <div class="col-6">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-text text-white bg-transparent fw-bold" id="inputGroup-sizing-sm ">Fecha de contratacion</span>
+                                                <input type="date" class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                              </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-text text-white bg-transparent fw-bold" id="inputGroup-sizing-sm">Hora de contratacion</span>
+                                                <input type="time" class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                              </div>
+                                        </div>
+                                    </form>
+                                </section>
+                            </div>                      
                     </div>
                 </div>
             </section>

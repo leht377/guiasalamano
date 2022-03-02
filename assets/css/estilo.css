@@ -318,7 +318,16 @@ thead {
 #spacing-row {
     height: 10px
 }
-#autenti{
-    background: url("./image/noautenticado.png");
 
-}
+
+#autenti {
+    background: url("../image/noautenticado.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(102, 202, 233);
+  }
+
+  #autenti2 {
+    background: url("../image/lindo-nino-afro-ilustracion-dibujos-animados-cuadro-texto-blanco_357749-979.png");
+    background-size: cover;
+  }
