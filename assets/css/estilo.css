@@ -331,3 +331,6 @@ thead {
     background: url("../image/lindo-nino-afro-ilustracion-dibujos-animados-cuadro-texto-blanco_357749-979.png");
     background-size: cover;
   }
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}

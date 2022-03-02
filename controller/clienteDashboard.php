@@ -51,7 +51,7 @@ class clienteDashboardController
     public function viewSitios($id)
     {
         $modelSitios = new sitios_model();
-        $datasitios = $modelSitios->getSitios($id);
+        $datasitios = $modelSitios->getSitiosbyCategoria($id);
         $dataJson = json_encode($datasitios);
         echo $dataJson;
         // $data[ "viewRequerida"]= "./view/component/sectionsitios.php";
@@ -156,5 +156,22 @@ class clienteDashboardController
         } else {
             return ["", false, "El documento no es una image"];
         }
+    }
+
+
+    public function getinformacionContratacionguia(){
+        $id_guia = $_POST['id_guia'];
+        $id_sitio = $_POST['id_sitio'];
+       
+        $guia = new guia_model();
+        $dataguia = $guia->getGuiabyid($id_guia);
+
+        $sitio = new sitios_model();
+        $datasitio = $sitio->getSitiosbyId($id_sitio);
+
+        $dataContratacion = array_merge($dataguia,$datasitio);
+
+        echo json_encode($dataContratacion) ;
+
     }
 }

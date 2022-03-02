@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  
   const opciones_menu = document.querySelectorAll(".opciones-menu");
   opciones_menu.forEach((opciones) => {
     opciones.addEventListener("click", () => {
@@ -37,7 +36,6 @@ $(document).ready(function () {
 });
 
 function getCategorias() {
- 
   $.ajax({
     type: "GET",
     url: "index.php?c=clienteDashboard&a=viewCategorias",
@@ -54,7 +52,6 @@ function getCategorias() {
     success: function (response) {
       template = "";
       var resultado = JSON.parse(response);
-      console.log(response);
       resultado.forEach((categoria) => {
         template += `
                 <div href = "#/sitios" class="card text-decoration-none text-white" style="width: 18rem;" role="button" onclick="getSitios(${categoria.id})">
@@ -106,6 +103,108 @@ function getSitios(id) {
   });
 }
 
+function showContratarguia(id_sitio,id_guia) {
+  $.ajax({
+    type: "POST",
+    url: "index.php?c=clienteDashboard&a=getinformacionContratacionguia",
+    data: {"id_sitio":id_sitio, "id_guia":id_guia},
+    beforeSend: function () {
+      template = `
+            <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            
+            `;
+      $("#contenidoDash").html(template);
+    },
+    success: function (response) {
+      var resultado = JSON.parse(response);
+      console.log(resultado);
+      template = `
+    <div class="row container-fluid p-2 py-3 rounded">
+                            <div class="col-3 d-flex flex-column justify-content-start ">
+                                <div class="card">
+                                    <div class="img1"><img src="https://upload.wikimedia.org/wikipedia/commons/5/53/La_Bocana_Port.jpg" >
+                                    </div>
+                                    <div class="img2"><img src='${resultado[0].foto_guia}' >
+                                    </div>
+                                    <div class="main-text">
+                                        <h2></h2>
+                                        <p>Nombre: ${resultado[0].nombre_guia} </p>
+                                        <p>Precio: ${resultado[1].precio} </p>
+                                        <div>
+                                            <p>Calificacion</p>
+                                            <span class="start"></span>
+                                            <span class="start"></span>
+                                            <span class="start"></span>
+                                            <span class="start"></span>
+                                            <span class="start"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <button class="btn bg-yellow text-dark fw-bold d-block w-100" type="submit">Solicitar</button>
+                                    <button class="btn bg-yellow text-dark fw-bold mt-2 d-block w-100">Cancelar</button>
+                                </div>
+                            </div>
+                            <div class="col-9 ">
+                                <header class="w-100" style="height: 200px;">
+                                    <img class="w-100 h-100 rounded" style="object-fit: cover;" src="${resultado[1].img}" >
+                                </header>
+                                <section class=" mt-4 p-2">
+                                    <form action="" class="row">
+                                        <h3 class="fw-bold text-white">Informacion del Guia</h3>
+                                        <div class="col-6">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-text text-white bg-transparent fw-bold" id="inputGroup-sizing-sm">Nombres</span>
+                                                <input type="text" class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value ="${resultado[0].nombre_guia}">
+                                              </div>
+                                              
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-text text-white bg-transparent fw-bold" id="inputGroup-sizing-sm">Apellidos</span>
+                                                <input type="text" class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value ="${resultado[0].apellido_guia}">
+                                              </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-text text-white bg-transparent fw-bold" id="inputGroup-sizing-sm">Destino</span>
+                                                <input type="text" class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value ="${resultado[1].nombre}">
+                                              </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-text text-white bg-transparent fw-bold" id="inputGroup-sizing-sm">Precio</span>
+                                                <input type="number" class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value ="${resultado[1].precio}">
+                                              </div>
+                                        </div>
+                                        <h3 class="fw-bold text-white">Seleccionar horario </h3>
+                                        <div class="col-6">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-text text-white bg-transparent fw-bold" id="inputGroup-sizing-sm ">Fecha de contratacion</span>
+                                                <input type="date" class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                              </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-text text-white bg-transparent fw-bold" id="inputGroup-sizing-sm">Hora de contratacion</span>
+                                                <input type="time" class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                              </div>
+                                        </div>
+                                    </form>
+                                </section>
+                            </div>                      
+                    </div>
+  
+  
+       `;
+       document.getElementById("title-dashboard").textContent = "Contratar Guia";
+      $("#contenidoDash").html(template);
+    },
+  });
+}
+
 function getGuias(id, nombre) {
   console.log(nombre);
   $.ajax({
@@ -125,7 +224,7 @@ function getGuias(id, nombre) {
       var resultado = JSON.parse(response);
       resultado.forEach((Guias) => {
         template += `
-                <div class="row text-decoration-none text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div class="row text-decoration-none text-white" onclick="showContratarguia(${id},'${Guias.id}')">
                     <div class="col-md-4">
                         <div class="card">
                             <div class="img1"><img src="https://upload.wikimedia.org/wikipedia/commons/5/53/La_Bocana_Port.jpg" >
@@ -173,7 +272,7 @@ function showConfingProfile(id) {
     success: function (response) {
       template = "";
       var resultado = JSON.parse(response);
-      
+
       resultado.forEach((resultado) => {
         console.log(resultado);
         template = ` 
