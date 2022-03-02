@@ -5,7 +5,7 @@ class connect{
         $port=3306;
         $socket="";
         $user="root";
-        $password="nacional2015";
+        $password="12345678";
         $dbname="guiasalamano";
     
         $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
