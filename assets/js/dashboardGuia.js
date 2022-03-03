@@ -9,11 +9,33 @@ $(document).ready(function () {
         opciones.classList.add("active-menu-opcion");
       });
     });
+    getClientesSolicitando();
 });
 
 function getClientesSolicitando(){
-  template = "";
-  template += ``;
+  $.ajax({
+    type: "GET",
+    url: "index.php?c=guiaDashboard&a=getlistsolicitudguia",
+    beforeSend: function () {
+      template = `
+            <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            
+            `;
+      $("#contenidoDash").html(template);
+    },
+    success: function (response) {
+      template = "";
+      var resultado = JSON.parse(response);
+      console.log(resultado);
+      // resultado.forEach((categoria) => {
+     
+      // });
+      // document.getElementById("title-dashboard").textContent = "Categorias para postularse";
+      
+    },
+  });
 }
 
 function getCategorias() {

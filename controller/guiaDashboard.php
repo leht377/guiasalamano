@@ -12,6 +12,7 @@
             require_once("./models/categorias_model.php");
             require_once("./models/sitios_model.php");
             require_once("./models/guia_model.php");
+            require_once("./models/contrato_model.php");
         }
 
         public function viewCategorias()
@@ -47,6 +48,13 @@
             echo $res;
         }
 
+        public function getlistsolicitudguia(){
+            session_start();
+            $id = $_SESSION["id"];
+            $contrato = new contrato_model();
+            $res = $contrato->listContratoSolicitadobyId($id);
+            echo json_encode($res);
+        }
 
         public function logout(){
             session_start();
