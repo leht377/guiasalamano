@@ -154,6 +154,7 @@
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Destino</th>
                                         <th scope="col">Fecha</th>
+                                        <th scope="col">Hora</th>
                                     </tr>
                                 </thead>
                                 <tbody>
