@@ -31,7 +31,7 @@
         public function viewSitios($id)
         {
             $modelSitios = new sitios_model();
-            $datasitios = $modelSitios->getSitios($id);
+            $datasitios = $modelSitios->getSitiosbyCategoria($id);
             $dataJson = json_encode($datasitios);
             echo $dataJson;
             // $data[ "viewRequerida"]= "./view/component/sectionsitios.php";

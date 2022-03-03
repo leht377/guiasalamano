@@ -34,6 +34,9 @@ $(document).ready(function () {
 
   getCategorias();
 });
+function enviarFormSolicitarguia(){
+  document.getElementById("btnsolicitarcliente").click();
+}
 
 function getCategorias() {
   $.ajax({
@@ -102,6 +105,43 @@ function getSitios(id) {
     },
   });
 }
+function sendInformationContratacion(id_sitio, id_guia){
+  $("#formsolicitarguia").submit(function (ev) {
+    let fecha_solicitud = document.getElementById("fecha_solicitud").value;
+    let hora_solicitud = document.getElementById("hora_solicitud").value;
+    $.ajax({
+      type: "POST",
+      url: $("#formsolicitarguia").attr("action"),
+      data: {"hora_solicitud":hora_solicitud,"fecha_solicitud":fecha_solicitud,"id_sitio": id_sitio,"id_guia": id_guia},
+      success: function (res) {
+        console.log(res);
+        if(res == 1){
+          Swal.fire({
+            icon: "success",
+            title: "Solicitar guia",
+            text: "Se han solicitado el guia satisfactoriamente espere a que confirme su solicito!",
+            color: "white",
+            background: "#4618AC",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+        }else{
+          Swal.fire({
+            icon: "error",
+            title: "Solicitar guia",
+            text: "No Se han podido solicitar el guia",
+            color: "white",
+            background: "#4618AC",
+            iconColor: "white",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+        }
+      },
+    });
+    ev.preventDefault();
+  });
+}
 
 function showContratarguia(id_sitio,id_guia) {
   $.ajax({
@@ -143,7 +183,7 @@ function showContratarguia(id_sitio,id_guia) {
                                     </div>
                                 </div>
                                 <div class="mt-3">
-                                    <button class="btn bg-yellow text-dark fw-bold d-block w-100" type="submit">Solicitar</button>
+                                    <button class="btn bg-yellow text-dark fw-bold d-block w-100" id="solicitarGuia" onclick="enviarFormSolicitarguia()" >Solicitar</button>
                                     <button class="btn bg-yellow text-dark fw-bold mt-2 d-block w-100">Cancelar</button>
                                 </div>
                             </div>
@@ -152,7 +192,7 @@ function showContratarguia(id_sitio,id_guia) {
                                     <img class="w-100 h-100 rounded" style="object-fit: cover;" src="${resultado[1].img}" >
                                 </header>
                                 <section class=" mt-4 p-2">
-                                    <form action="" class="row">
+                                    <form action="index.php?c=clienteDashboard&a=solcitarguia" metod= "post" class="row" id="formsolicitarguia">
                                         <h3 class="fw-bold text-white">Informacion del Guia</h3>
                                         <div class="col-6">
                                             <div class="input-group input-group-sm mb-3">
@@ -183,15 +223,16 @@ function showContratarguia(id_sitio,id_guia) {
                                         <div class="col-6">
                                             <div class="input-group input-group-sm mb-3">
                                                 <span class="input-group-text text-white bg-transparent fw-bold" id="inputGroup-sizing-sm ">Fecha de contratacion</span>
-                                                <input type="date" class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                                <input type="date" name="fecha_solicitud"  id="fecha_solicitud" required class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                               </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="input-group input-group-sm mb-3">
                                                 <span class="input-group-text text-white bg-transparent fw-bold" id="inputGroup-sizing-sm">Hora de contratacion</span>
-                                                <input type="time" class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                                <input type="time" name="hora_solicitud" id="hora_solicitud" required class="form-control bg-transparent text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                               </div>
                                         </div>
+                                        <button type="submit" id="btnsolicitarcliente" hidden></button>
                                     </form>
                                 </section>
                             </div>                      
@@ -199,8 +240,9 @@ function showContratarguia(id_sitio,id_guia) {
   
   
        `;
-       document.getElementById("title-dashboard").textContent = "Contratar Guia";
+      document.getElementById("title-dashboard").textContent = "Contratar Guia";
       $("#contenidoDash").html(template);
+      sendInformationContratacion(id_sitio,id_guia);
     },
   });
 }
@@ -398,8 +440,7 @@ function showConfingProfile(id) {
             `;
       });
       $("#contenidoDash").html(template);
-      document.getElementById("title-dashboard").textContent =
-        "Configuracion del usuario";
+      document.getElementById("title-dashboard").textContent =  "Configuracion del usuario";
       $("#formConfigUs").submit(function (ev) {
         console.log($("#formConfigUs").attr("action"));
         $.ajax({

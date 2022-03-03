@@ -149,9 +149,11 @@
                 <div class="informacion_dash w-100 d-flex justify-content-between align-items-center px-3 py-2">
                     <span id="title-dashboard" class="p-2 text-white fw-bold fs-4"></span>
                 </div>
-                <div class="d-flex flex-wrap justify-content-around align-items-center" id="contenidoDash" style="gap:10px;">
-
-                </div>
+               
+                    <div class="d-flex flex-wrap justify-content-around align-items-center" id="contenidoDash" style="gap:10px;">
+                            
+                    </div>
+                
             </section>
         </main>
         <footer class="bg-violet-dark row text-center" style="min-height: 100px">
