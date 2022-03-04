@@ -146,43 +146,7 @@
                     <span id="title-dashboard" class="ps-2 text-white fw-bold fs-4"></span>
                 </div>
                 <div class="d-flex flex-wrap justify-content-around align-items-center" id="contenidoDash" style="gap:10px;">
-                    <div class="container rounded mt-2 bg-violet-light p-md-5">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Destino</th>
-                                        <th scope="col">Fecha</th>
-                                        <th scope="col">Hora</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="bg-blue">
-                                        <td class="pt-2"> <img class="img-user-table rounded-circle" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-                                            <div class="pl-lg-5 pl-md-3 pl-1 name">Emilia Kollette</div>
-                                        </td>
-                                        <td class="pt-3 mt-1">25 Sep 2020</td>
-                                        <td class="pt-3">11:00 AM</td>
-                                        <!-- <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
-                                        <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td> -->
-                                    </tr>
-                                    <tr id="spacing-row">
-                                        <td></td>
-                                    </tr>
-                                    <tr class="bg-blue">
-                                        <td class="pt-2"> <img class="img-user-table rounded-circle" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-                                            <div class="pl-lg-5 pl-md-3 pl-1 name">Emilia Kollette</div>
-                                        </td>
-                                        <td class="pt-3 mt-1">25 Sep 2020</td>
-                                        <td class="pt-3">11:00 AM</td>
-                                        <!-- <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
-                                        <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td> -->
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                   
                 </div>
             </section>
         </main>

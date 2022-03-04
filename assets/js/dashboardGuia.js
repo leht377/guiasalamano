@@ -16,24 +16,58 @@ function getClientesSolicitando(){
   $.ajax({
     type: "GET",
     url: "index.php?c=guiaDashboard&a=getlistsolicitudguia",
-    beforeSend: function () {
-      template = `
-            <div class="spinner-border text-light" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
+    // beforeSend: function () {
+    //   template = `
+    //         <div class="spinner-border text-light" role="status">
+    //             <span class="visually-hidden">Loading...</span>
+    //         </div>
             
-            `;
-      $("#contenidoDash").html(template);
-    },
+    //         `;
+    //   $("#contenidoDash").html(template);
+    // },
     success: function (response) {
       template = "";
+      rows = "";
       var resultado = JSON.parse(response);
       console.log(resultado);
-      // resultado.forEach((categoria) => {
-     
-      // });
+      resultado.forEach((cliente) => {
+        rows += `
+        <tr class="bg-blue">
+        <td class="pt-2"> <img class="img-user-table rounded-circle" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+            <div class="pl-lg-5 pl-md-3 pl-1 name">${cliente.cliente_nombre}</div>
+        </td>
+            <td class="pt-3 mt-1">${cliente.sitio_nombre}</td>
+            <td class="pt-3">${cliente.fecha}</td>
+            <td class="pt-3">${cliente.hora}</td>
+        </tr>
+        <tr id="spacing-row">
+            <td></td>
+        </tr>
+        
+        `;
+      });
+      template += `
+            <div class="container rounded mt-2 bg-violet-light p-md-5">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Destino</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       ${rows}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      `;
+
       // document.getElementById("title-dashboard").textContent = "Categorias para postularse";
-      
+      $("#contenidoDash").html(template);
     },
   });
 }
