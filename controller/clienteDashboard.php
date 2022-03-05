@@ -1,7 +1,6 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+
 use Twilio\Rest\Client;
 
 class clienteDashboardController
@@ -18,7 +17,6 @@ class clienteDashboardController
         require_once("./models/guia_model.php");
         require_once("./models/cliente_model.php");
         require_once("./models/contrato_model.php");
-        
         $this->sitioFamosos = array();
     }
 
@@ -183,72 +181,39 @@ class clienteDashboardController
         echo json_encode($dataContratacion) ;
 
     }
-    private function mailer($email){
-        require_once( './PHPMailer/Exception.php');
-        require_once('./PHPMailer/PHPMailer.php');
-        require_once( './PHPMailer/SMTP.php');
-        $mail = new PHPMailer(true);
 
-        try {
-            //Server settings
-            $mail->SMTPDebug = 0;                      //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'guiasalamano377@gmail.com';                     //SMTP username
-            $mail->Password   = '12345678fjtt';                               //SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-            //Recipients
-            $mail->setFrom('guiasalamano377@gmail.com', 'Guiasalamano');
-            $mail->addAddress($email, 'Joe User');     //Add a recipient
-            // $mail->addAddress('ellen@example.com');               //Name is optional
-            // $mail->addReplyTo('info@example.com', 'Information');
-            // $mail->addCC('cc@example.com');
-            // $mail->addBCC('bcc@example.com');
-
-            //Attachments
-            // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
-
-            //Content
-            $mail->isHTML(true);                                  //Set email format to HTML
-            $mail->Subject = 'PRUEBA';
-            $mail->Body    = 'HOLA DIEGO PUTO !</b>';
-            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-            $mail->send();
-            // echo 'Message has been sent';
-        } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-        }
+    private function mailer($addresEmail){
+        require_once('./helpers/sendEmail.php');
+        $email = new helperEmail();
+        $email->sendEmail($addresEmail);
     }
-private function twilio($numeroguia){
 
- 
-    // Update the path below to your autoload.php, 
-    // see https://getcomposer.org/doc/01-basic-usage.md 
-    require_once './twilio/autoload.php'; 
-     
-     
-     
-    $sid    = "AC6d208c123c4fbdd5b0036f68ba70fdf1"; 
-    $token  = "c038720e1e69c4d8d213793a2712d6c6"; 
-    $twilio = new Client($sid, $token); 
-     
-    $message = $twilio->messages 
-                      ->create("whatsapp:+573104241775", // to 
-                               array( 
-                                   "from" => "whatsapp:+14155238886",       
-                                   "body" => "solicitud de tus servicios." 
-                               ) 
-                      ); 
-     
-    print($message->sid);
+    private function twilio($numeroguia){
+
+    
+        // Update the path below to your autoload.php, 
+        // see https://getcomposer.org/doc/01-basic-usage.md 
+        require_once './twilio/autoload.php'; 
+        
+        
+        
+        $sid    = "AC6d208c123c4fbdd5b0036f68ba70fdf1"; 
+        $token  = "c038720e1e69c4d8d213793a2712d6c6"; 
+        $twilio = new Client($sid, $token); 
+        
+        $message = $twilio->messages 
+                        ->create("whatsapp:+573104241775", // to 
+                                array( 
+                                    "from" => "whatsapp:+14155238886",       
+                                    "body" => "solicitud de tus servicios." 
+                                ) 
+                        ); 
+        
+        print($message->sid);
 
 
-}
+    }
+
     public function solcitarguia(){
         session_start();
         $hora_solicitud = $_POST["hora_solicitud"];
@@ -260,8 +225,8 @@ private function twilio($numeroguia){
         $contrato = new contrato_model();
         $res = $contrato->crearContrato($id_cliente,$id_sitio, $id_guia,$fecha_solicitud,$hora_solicitud);
         if($res ==1){
-            $this->twilio("");
-        //    $this-> mailer("bhgespinel@gmail.com");
+            // $this->twilio("");
+           $this-> mailer("soydelverde377@gmail.com");
         }
         echo $res;
     }

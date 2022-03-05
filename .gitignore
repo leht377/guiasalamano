@@ -1,2 +1,2 @@
-middleware
-db/*
+db
+vendor
