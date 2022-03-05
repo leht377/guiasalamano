@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -18,10 +18,10 @@
 <body id="container-registro-guia">
   <main class="d-flex align-items-center vh-100">
 
-    <form class="px-5 py-4 needs-validation container-sm container-md rounded" action="index.php?c=registroguia&a=registrasGuia" novalidate autocomplete="off" method="post" id="box-card-guia" enctype="multipart/form-data" style="width: 800px" ;>
+    <form class="px-3 py-4 needs-validation container-sm container-md rounded" action="index.php?c=registroguia&a=registrasGuia" novalidate autocomplete="off" method="post" id="box-card-guia" enctype="multipart/form-data" style="width: 800px" ;>
       <h1 class="text-center text-white mb-4">Registro de guía</h1>
       <section class="row">
-        <div class=" col-sm-12 col-md-4  ">
+        <div class="col-6 col-sm-12 col-md-4  ">
           <div class="form-floating-sm mb-3 ">
             <input type="text" class="form-control bg-transparent text-white" placeholder="Nombres" name="nombres_guia" required>
             <div class="invalid-feedback">
@@ -29,7 +29,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-12 col-md-4 ">
+        <div class="col-6 col-sm-12 col-md-4 ">
           <div class="form-floating-sm mb-3">
             <input type="text" class="form-control text-white bg-transparent" placeholder="Apellidos" name="apellidos_guia" required>
             <div class="invalid-feedback">
@@ -38,7 +38,7 @@
           </div>
         </div>
 
-        <div class=" col-sm-4 col-md-4">
+        <div class="col-6 col-sm-4 col-md-4">
           <div class="form-floating-sm mb-3">
             <input type="number" class="form-control text-white bg-transparent" placeholder="Edad" name="edad_guia" required>
             <div class="invalid-feedback">
@@ -46,7 +46,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-8 col-md-4">
+        <div class="col-6 col-sm-8 col-md-4">
           <div class="form-floating-sm mb-3">
             <input type="number" class="form-control text-white bg-transparent" placeholder="Celular" name="celular_guia" required>
             <div class="invalid-feedback">
@@ -72,7 +72,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-6  col-md-6 col-sm-12">
+        <div class="col-6 col-xl-6  col-md-6 col-sm-12">
           <div class="form-floating-sm">
             <select class="form-select bg-transparent text-white  mb-3" aria-label="Floating label select example" name="tipodocumento_guia" required>
               <option value="">Tipo de documento</option>
@@ -84,7 +84,7 @@
             </select>
           </div>
         </div>
-        <div class="col-xl-6 col-md-6 col-sm-12">
+        <div class="col-6 col-xl-6 col-md-6 col-sm-12">
           <div class="form-floating-sm mb-3">
             <input type="number" class="form-control text-white bg-transparent" placeholder="Cedula" name="documento_guia" required>
             <div class="invalid-feedback">
@@ -110,7 +110,7 @@
           </div>
         </div> -->
 
-        <div class="col-xl-6 col-md-6 col-sm-12">
+        <div class="col-6 col-xl-6 col-md-6 col-sm-12">
           <div class="form-floating-sm mb-3">
             <input type="text" class="form-control text-white bg-transparent" placeholder="Usuario" name="usuario_guia" required>
             <div class="invalid-feedback">
@@ -119,7 +119,7 @@
           </div>
         </div>
 
-        <div class=" col-6 col-md-12 col-sm-12 col-xl-6">
+        <div class=" col-12 col-md-12 col-sm-12 col-xl-6">
           <div class="form-floating-sm mb-3 position-relative ">
             <input type="password" class="form-control bg-transparent text-white" placeholder="Contraseña" id="password_guia" name="password_guia" required>
             <div class="invalid-feedback">

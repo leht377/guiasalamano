@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -128,7 +128,7 @@
                     <div class="container">
                         <h4 class="mt-4 mb-4 text-white fw-bold">Guia</h4>
                         <ul class=" p-0" id="lista-destinos">
-                            <li class='list-unstyled p-2 text-white rounded fw-bold  opciones-menu active-menu-opcion' role='button'> Clientes solicitando</li>
+                            <li class='list-unstyled p-2 text-white rounded fw-bold  opciones-menu active-menu-opcion' role='button' onclick="getClientesSolicitando()" > Clientes solicitando</li>
                             <li class='list-unstyled p-2 text-white rounded fw-bold  opciones-menu' role='button' id="btnPostular" onclick="getCategorias()"> Postular destino</li>
                         </ul>
                     </div>

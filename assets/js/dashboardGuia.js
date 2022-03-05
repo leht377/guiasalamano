@@ -47,7 +47,7 @@ function getClientesSolicitando(){
         `;
       });
       template += `
-            <div class="container rounded mt-2 bg-violet-light p-md-5">
+            <div class="container-fluid rounded mt-2 bg-violet-light p-md-5">
             <div class="table-responsive">
                 <table class="table">
                     <thead>
