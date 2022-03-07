@@ -193,7 +193,7 @@ class clienteDashboardController
     
         // Update the path below to your autoload.php, 
         // see https://getcomposer.org/doc/01-basic-usage.md 
-        require_once './twilio/autoload.php'; 
+        require_once './vendor/autoload.php';
         
         
         
@@ -225,7 +225,7 @@ class clienteDashboardController
         $contrato = new contrato_model();
         $res = $contrato->crearContrato($id_cliente,$id_sitio, $id_guia,$fecha_solicitud,$hora_solicitud);
         if($res ==1){
-            // $this->twilio("");
+           $this->twilio("");
            $this-> mailer("soydelverde377@gmail.com");
         }
         echo $res;
