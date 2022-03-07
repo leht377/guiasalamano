@@ -258,67 +258,14 @@ body::-webkit-scrollbar-thumb {
 /* ________________________________________________*/
 /* ________ESTILOS TABLE CLIENTES SOLICITANDO_______*/
 /* ________________________________________________*/
-
-
-thead {
-    font-family: 'Poppins', sans-serif;
-    font-weight: bolder;
-    font-size: 20px;
-    color:white;
+table .filas:hover{
+    transition: .3s ease;
+    background: #FAD318;
 }
-
-.img-user-table {
-    width: 40px;
-    height: 40px
-}
-
-.name {
-    display: inline-block;
-}
-
-.bg-blue {
-    border-radius: 8px;
-    color: white;
-    font-weight: bold;
-}
-
-.fa-check,
-.fa-minus {
-    color: blue
-}
-
-.bg-blue:hover {
-    background-color: #FAD318;
+table .filas:hover td{
+    transition: .3s ease;
     color: black !important;
-    font-weight: bold;
-    cursor: pointer
 }
-
-.bg-blue:hover .fa-check,
-.bg-blue:hover .fa-minus {
-    background-color: #3e64ff;
-    color: #eee
-}
-
-.table thead th,
-.table td {
-    border: none
-}
-
-.table tbody td:first-child {
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px
-}
-
-.table tbody td:last-child {
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px
-}
-
-#spacing-row {
-    height: 10px
-}
-
 
 #autenti {
     background: url("../image/playa3.jpg");

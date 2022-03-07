@@ -11,6 +11,9 @@ $(document).ready(function () {
     });
     getClientesSolicitando();
 });
+function contratarguia(idCliente){
+  alert(idCliente);
+}
 
 function getClientesSolicitando(){
   $.ajax({
@@ -30,43 +33,41 @@ function getClientesSolicitando(){
       rows = "";
       var resultado = JSON.parse(response);
       console.log(resultado);
-      resultado.forEach((cliente) => {
+      resultado.forEach((cliente,index) => {
         rows += `
-        <tr class="bg-blue">
-        <td class="pt-2"> <img class="img-user-table rounded-circle" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-            <div class="pl-lg-5 pl-md-3 pl-1 name">${cliente.cliente_nombre}</div>
-        </td>
-            <td class="pt-3 mt-1">${cliente.sitio_nombre}</td>
-            <td class="pt-3">${cliente.fecha}</td>
-            <td class="pt-3">${cliente.hora}</td>
+
+        <tr class="${index % 2 == 0 ? 'bg-violet-light':'bg-violet-dark' } border-0 filas" role="button" onclick="contratarguia(${cliente.id})">
+            <td class = "text-white fw-bold border-0 align-middle">
+                <img loanding="lazy" src="${cliente.foto}" class="rounded-circle"  style="width: 40px; height: 40px;">
+               ${cliente.cliente_nombre}   ${cliente.apellidos}
+            </td>
+            <td class="text-white border-0 fw-bold align-middle" >${cliente.sitio_nombre}</td>
+            <td class="text-white border-0 fw-bold align-middle" >${cliente.fecha}</td>
         </tr>
-        <tr id="spacing-row">
-            <td></td>
-        </tr>
-        
+    
         `;
       });
+
       template += `
-            <div class="container-fluid rounded mt-2 bg-violet-light p-md-5">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Destino</th>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Hora</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                       ${rows}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+          <div class="w-100">
+          <div class="table-responsive">
+              <table class="table overflow-hidden rounded border">
+                  <thead>
+                      <tr class="bg-violet-dark text-white fs-5">
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Destino</th>
+                          <th scope="col">Fecha</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      ${rows}
+                  </tbody>
+              </table>
+          </div>
+      </div>
       `;
 
-      // document.getElementById("title-dashboard").textContent = "Categorias para postularse";
+       document.getElementById("title-dashboard").textContent = "Clientes solicitando servicios";
       $("#contenidoDash").html(template);
     },
   });

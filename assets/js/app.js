@@ -114,15 +114,7 @@ function sendInformationContratacion(id_sitio, id_guia){
       url: $("#formsolicitarguia").attr("action"),
       data: {"hora_solicitud":hora_solicitud,"fecha_solicitud":fecha_solicitud,"id_sitio": id_sitio,"id_guia": id_guia},
       beforeSend: function () {
-        Swal.fire({
-          icon: "success",
-          title: "Solicitar guia",
-          text: "Se han solicitado el guia satisfactoriamente espere a que confirme su solicito!",
-          color: "white",
-          background: "#4618AC",
-          showConfirmButton: false,
-          timer: 3000,
-        });
+        
       },
       success: function (res) {
         console.log(res);
