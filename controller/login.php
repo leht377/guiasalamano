@@ -35,6 +35,7 @@ use function PHPSTORM_META\map;
                 $_SESSION['nombres'] = $resul[0]['nombres']; 
                 $_SESSION['documento'] = $resul[0]['documento'] ;
                 $_SESSION['apellidos'] = $resul[0]['apellidos']; 
+                $_SESSION['foto'] = $resul[0]['foto']; 
                 $_SESSION['id'] = $resul[0]['id']; 
 
             }else if($credencial['Rol_id'] == $rolGuia){
@@ -43,6 +44,7 @@ use function PHPSTORM_META\map;
                 $resul = $guia->getInfoGuiaSession($credencial['id']);
                 $_SESSION['nombres'] = $resul[0]['nombres']; 
                 $_SESSION['apellidos'] = $resul[0]['apellidos']; 
+                $_SESSION['foto'] = $resul[0]['foto']; 
                 $_SESSION['id'] = $resul[0]['id'];
             }
           
