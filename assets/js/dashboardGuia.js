@@ -36,7 +36,7 @@ function getClientesSolicitando(){
       resultado.forEach((cliente,index) => {
         rows += `
 
-        <tr class="${index % 2 == 0 ? 'bg-violet-light':'bg-violet-dark' } border-0 filas" role="button" onclick="contratarguia(${cliente.id})">
+        <tr class="${index % 2 == 0 ? 'bg-violet':'bg-violet-dark' } border-0 filas" role="button" onclick="contratarguia(${cliente.id})">
             <td class = "text-white fw-bold border-0 align-middle">
                 <img loanding="lazy" src="${cliente.foto}" class="rounded-circle"  style="width: 40px; height: 40px;">
                ${cliente.cliente_nombre} 

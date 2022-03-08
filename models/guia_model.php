@@ -8,7 +8,7 @@
         }
 
         public function getInfoGuiaSession($id){
-            $sql = "SELECT `nombres`,`id`,`apellidos` FROM `guia` WHERE `credenciales_id` = '$id';";
+            $sql = "SELECT `nombres`,`id`,`apellidos`,`foto` FROM `guia` WHERE `credenciales_id` = '$id';";
             $res = $this->db->query($sql);
             while($row = $res->fetch_assoc())
 			{

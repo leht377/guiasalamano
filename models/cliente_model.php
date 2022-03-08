@@ -163,7 +163,7 @@ class cliente_model
 
     public function getInfoClienteSession($id)
     {
-        $sql = "SELECT `nombres`,`id`,`apellidos`,`documento` FROM `cliente` WHERE `credenciales_id` = '$id';";
+        $sql = "SELECT `nombres`,`id`,`apellidos`,`documento`,`foto` FROM `cliente` WHERE `credenciales_id` = '$id';";
         $res = $this->db->query($sql);
         while ($row = $res->fetch_assoc()) {
             $this->clientes2[] = $row;

@@ -19,6 +19,9 @@ body::-webkit-scrollbar-thumb {
 .bg-violet-dark{
     background-color:#311178;
 }
+.bg-violet{
+    background-color:#40169b;
+}
 .bg-violet-light{
     background-color: #4618AC;
 }

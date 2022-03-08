@@ -19,7 +19,7 @@
         <header class="bg-violet-dark row" style="height: 15%;">
             <div class="col-xl-4 col-md-6 d-flex justify-content-xl-start justify-content-center  align-items-center">
                 <div class="user-header" onclick="">
-                    <img src="https://i.pinimg.com/originals/91/32/e2/9132e28672cbbc5ec8c7ed793dd2c20e.jpg" class="img-fluid" alt="User Pic">
+                <?php echo' <img src="'. $_SESSION['foto'].'" class="img-fluid" alt="User Pic">';?>
                 </div>
                 <h6 class="mx-3 mt-2 text-white fw-bold"><?php echo $_SESSION['nombres'] . ' ' . $_SESSION['apellidos']; ?> </h6>
             </div>
