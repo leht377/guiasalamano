@@ -39,7 +39,7 @@ function getClientesSolicitando(){
         <tr class="${index % 2 == 0 ? 'bg-violet-light':'bg-violet-dark' } border-0 filas" role="button" onclick="contratarguia(${cliente.id})">
             <td class = "text-white fw-bold border-0 align-middle">
                 <img loanding="lazy" src="${cliente.foto}" class="rounded-circle"  style="width: 40px; height: 40px;">
-               ${cliente.cliente_nombre}   ${cliente.apellidos}
+               ${cliente.cliente_nombre} 
             </td>
             <td class="text-white border-0 fw-bold align-middle" >${cliente.sitio_nombre}</td>
             <td class="text-white border-0 fw-bold align-middle" >${cliente.fecha}</td>
@@ -51,7 +51,7 @@ function getClientesSolicitando(){
       template += `
           <div class="w-100">
           <div class="table-responsive">
-              <table class="table overflow-hidden rounded border">
+              <table class="table overflow-hidden rounded border-0">
                   <thead>
                       <tr class="bg-violet-dark text-white fs-5">
                           <th scope="col">Nombre</th>

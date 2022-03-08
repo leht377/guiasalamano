@@ -1,8 +1,5 @@
 <?php
 
-
-use Twilio\Rest\Client;
-
 class clienteDashboardController
 {
     private $sitioFamosos;
@@ -188,32 +185,6 @@ class clienteDashboardController
         $email->sendEmail($addresEmail);
     }
 
-    private function twilio($numeroguia){
-
-    
-        // Update the path below to your autoload.php, 
-        // see https://getcomposer.org/doc/01-basic-usage.md 
-        require_once './vendor/autoload.php';
-        
-        
-        
-        $sid    = "AC6d208c123c4fbdd5b0036f68ba70fdf1"; 
-        $token  = "c038720e1e69c4d8d213793a2712d6c6"; 
-        $twilio = new Client($sid, $token); 
-        
-        $message = $twilio->messages 
-                        ->create("whatsapp:+573104241775", // to 
-                                array( 
-                                    "from" => "whatsapp:+14155238886",       
-                                    "body" => "solicitud de tus servicios." 
-                                ) 
-                        ); 
-        
-        print($message->sid);
-
-
-    }
-
     public function solcitarguia(){
         session_start();
         $hora_solicitud = $_POST["hora_solicitud"];
@@ -225,7 +196,6 @@ class clienteDashboardController
         $contrato = new contrato_model();
         $res = $contrato->crearContrato($id_cliente,$id_sitio, $id_guia,$fecha_solicitud,$hora_solicitud);
         if($res ==1){
-           $this->twilio("");
            $this-> mailer("soydelverde377@gmail.com");
         }
         echo $res;
