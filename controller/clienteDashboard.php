@@ -104,11 +104,10 @@ class clienteDashboardController
     public function updatePhotoCliente()
     {
         $cliente = new cliente_model();
-        $id = $_POST['id'];
+        $id = (int) $_POST['id'];
         [$ruta, $stado, $msg] = $this->upload();
-        echo $stado . '  ' . $ruta . ' ' . $id;
         if ($stado) {
-            $res = $cliente->UpdatePhoto($id, $ruta);
+            $res = $cliente->UpdatePhoto($ruta,$id);
         }
     }
 

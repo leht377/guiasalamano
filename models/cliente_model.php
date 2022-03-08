@@ -173,7 +173,7 @@ class cliente_model
 
     public function UpdatePhoto($ruta, $id)
     {
-        $sql = "UPDATE `cliente` SET `foto` = '$ruta'  WHERE (`id` = '$id');";
+        $sql = "UPDATE `cliente` SET `foto` = '$ruta' WHERE `id` = '$id';";
         $res = $this->db->query($sql);
         if ($res === false) {
             echo " <p class='text-white'> SQL Error en credenciales: " . $this->db->error . "</p>";
