@@ -184,6 +184,12 @@ class clienteDashboardController
         $email->sendEmail($addresEmail);
     }
 
+    private function twilio (){
+        require_once("./helpers/mensajeswhatp.php");
+        $numer = new  mensajeswhatp ();
+        $numer->mensajeswhatp();
+     }
+
     public function solcitarguia(){
         session_start();
         $hora_solicitud = $_POST["hora_solicitud"];
