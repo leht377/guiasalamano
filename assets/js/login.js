@@ -1,6 +1,7 @@
 $(document).ready(function () {
     login();
 });
+
 function login(){
     $("#form_login").submit(function (ev) {
       $.ajax({

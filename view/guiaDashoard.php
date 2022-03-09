@@ -42,9 +42,9 @@
 
         <main class="row" style="min-height:90%" ;>
             <aside class="col-xl-2 col-sm-12 p-0 bg-violet-light sticky-top">
-                <div class="d-xl-none w-100 px-4 py-3 d-flex align-items-center">
-                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#menuOpciones" aria-expanded="false" aria-controls="menuOpciones">
-                        <i class="fas fa-bars"></i>
+                <div class="d-xl-none w-100 px-3 py-3 d-flex align-items-center">
+                    <button class="btn bg-violet-dark" type="button" data-bs-toggle="collapse" data-bs-target="#menuOpciones" aria-expanded="false" aria-controls="menuOpciones">
+                        <i class="fas fa-bars text-white"></i>
                     </button>
                     <span class="ms-4 fs-5 fw-bold text-white">Opciones</span>
                 </div>

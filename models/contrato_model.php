@@ -19,6 +19,16 @@
 
         }
 
+        function setEstadoContrato($id,$newEstado){
+            $sql = "UPDATE contrato SET `estado` = '$newEstado' WHERE `id` = $id ";
+            $res = $this->db->query($sql);
+
+            if ($res === false) {
+                echo " <p class='text-white'> SQL Error en credenciales: " . $this->db->error . "</p>";
+                return false;
+            }
+            return true;
+        }
 
         function listContratoSolicitadobyId($id){
             $sql = "

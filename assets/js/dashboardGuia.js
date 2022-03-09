@@ -12,9 +12,45 @@ $(document).ready(function () {
     getClientesSolicitando();
 });
 function contratarguia(idCliente){
-  alert(idCliente);
+  // alert(idCliente);
 }
-
+function rechazarSolicitud(id_contrato){
+    Swal.fire({
+      title: "Rechazar solicitud",
+      text: "Estas seguro de rechazar la solicitud?",
+      icon: "warning",
+      showCancelButton: true,
+      background: "#4618AC",
+      color: "white",
+      confirmButtonColor: "#FAD318",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Rechazar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          type: "POST",
+          url: "index.php?c=guiaDashboard&a=rechazarSolicitudContrato",
+          data: {"id_contrato":id_contrato},
+          cache: false,
+          success: function (response) {
+            if (response == 1) {
+              Swal.fire({
+                icon: "success",
+                title: "Rechazar solicitud",
+                text: "Se ha completado exitosamente la operacion!",
+                color: 'black',
+                showConfirmButton: false,
+                timer: 3000
+              });
+              setTimeout(()=>{
+                getClientesSolicitando();
+              },800);   
+            }
+          },
+        });
+      }
+    });
+}
 function getClientesSolicitando(){
   $.ajax({
     type: "GET",
@@ -36,13 +72,28 @@ function getClientesSolicitando(){
       resultado.forEach((cliente,index) => {
         rows += `
 
-        <tr class="${index % 2 == 0 ? 'bg-violet':'bg-violet-dark' } border-0 filas" role="button" onclick="contratarguia(${cliente.id})">
+        <tr class="${index % 2 == 0 ? 'bg-violet':'bg-violet-dark' } border-0 filas">
             <td class = "text-white fw-bold border-0 align-middle">
-                <img loanding="lazy" src="${cliente.foto}" class="rounded-circle"  style="width: 40px; height: 40px;">
+                <img loanding="lazy" src="${cliente.foto}" class="rounded-circle" style="width: 40px; height: 40px;">
                ${cliente.cliente_nombre} 
             </td>
             <td class="text-white border-0 fw-bold align-middle" >${cliente.sitio_nombre}</td>
-            <td class="text-white border-0 fw-bold align-middle" >${cliente.fecha}</td>
+            <td class="text-white border-0 fw-bold  d-flex justify-content-between align-items-center" >
+                <div>
+                    ${cliente.fecha} 
+                </div>
+                <div class="dropstart">
+                    <a class="btn text-white btn_solicitado" href="#"  role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </a>
+                    <ul class="dropdown-menu bg-violet-dark menu_clientes_solicitado" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item text-white fw-bold" href="#" onclick="contratarguia(${cliente.id})" >Ver informacion completa</a></li>
+                      <li><a class="dropdown-item text-white fw-bold" href="#">Aceptar solicitud</a></li>
+                      <li><a class="dropdown-item text-white fw-bold" href="#" onclick="rechazarSolicitud(${cliente.id})">Rechazar solicitud</a></li>
+                    </ul>
+                </div> 
+            
+            </td>
         </tr>
     
         `;
@@ -51,7 +102,7 @@ function getClientesSolicitando(){
       template += `
           <div class="w-100">
           <div class="table-responsive">
-              <table class="table overflow-hidden rounded border-0">
+              <table class="table overflow-hidden rounded border-0" >
                   <thead>
                       <tr class="bg-violet-dark text-white fs-5">
                           <th scope="col">Nombre</th>
@@ -69,6 +120,7 @@ function getClientesSolicitando(){
 
        document.getElementById("title-dashboard").textContent = "Clientes solicitando servicios";
       $("#contenidoDash").html(template);
+
     },
   });
 }

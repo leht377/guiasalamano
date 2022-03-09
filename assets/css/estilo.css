@@ -261,13 +261,22 @@ body::-webkit-scrollbar-thumb {
 /* ________________________________________________*/
 /* ________ESTILOS TABLE CLIENTES SOLICITANDO_______*/
 /* ________________________________________________*/
-table .filas:hover{
+
+.filas:hover{
     transition: .3s ease;
     background: #FAD318;
 }
-table .filas:hover td{
+
+.filas:hover td , .filas:hover .btn_solicitado{
     transition: .3s ease;
     color: black !important;
+}
+.menu_clientes_solicitado{
+    -webkit-box-shadow: -1px 4px 15px 1px rgba(0,0,0,0.79); 
+    box-shadow: -1px 4px 15px 1px rgba(0,0,0,0.79); 
+}
+.menu_clientes_solicitado a:hover{
+    background-color: #4618AC;
 }
 
 #autenti {

@@ -56,6 +56,14 @@
             echo json_encode($res);
         }
 
+        public function rechazarSolicitudContrato(){
+            $id = $_POST["id_contrato"];
+            $estado = "rechazado";
+            $contrato = new contrato_model();
+            $res = $contrato->setEstadoContrato($id,$estado);
+            echo $res;
+        }   
+
         public function logout(){
             session_start();
             if (session_destroy()){
