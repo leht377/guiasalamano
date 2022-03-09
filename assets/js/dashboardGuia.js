@@ -102,7 +102,6 @@ function getClientesAceptados(){
       template = "";
       rows = "";
       var resultado = JSON.parse(response);
-      console.log(resultado);
       resultado.forEach((cliente,index) => {
         rows += `
 
@@ -176,10 +175,8 @@ function getClientesSolicitando(){
       template = "";
       rows = "";
       var resultado = JSON.parse(response);
-      console.log(resultado);
       resultado.forEach((cliente,index) => {
         rows += `
-
         <tr class="${index % 2 == 0 ? 'bg-violet':'bg-violet-dark' } border-0 filas">
             <td class = "text-white fw-bold border-0 align-middle">
                 <img loanding="lazy" src="${cliente.foto}" class="rounded-circle" style="width: 40px; height: 40px;">
