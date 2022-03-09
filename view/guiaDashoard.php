@@ -63,6 +63,7 @@
                         <h4 class="mt-4 mb-4 text-white fw-bold">Guia</h4>
                         <ul class=" p-0" id="lista-destinos">
                             <li class='list-unstyled p-2 text-white rounded fw-bold  opciones-menu active-menu-opcion' role='button' onclick="getClientesSolicitando()" > Clientes solicitando</li>
+                            <li class='list-unstyled p-2 text-white rounded fw-bold  opciones-menu ' role='button' onclick="getClientesAceptados()" > Clientes Aceptados</li>
                             <li class='list-unstyled p-2 text-white rounded fw-bold  opciones-menu' role='button' id="btnPostular" onclick="getCategorias()"> Postular destino</li>
                         </ul>
                     </div>
@@ -76,8 +77,8 @@
                 </div>
             </aside>
             <section class="col-xl-10 col-sm-12 p-3 bg-violet-light">
-                <div class="informacion_dash w-100 d-flex justify-content-between align-items-center px-3 py-2">
-                    <span id="title-dashboard" class="ps-2 text-white fw-bold fs-4"></span>
+                <div class="informacion_dash w-100 d-flex justify-content-between align-items-center  py-2">
+                    <span id="title-dashboard" class=" text-white fw-bold fs-4"></span>
                 </div>
                 <div class="d-flex flex-wrap justify-content-around align-items-center" id="contenidoDash" style="gap:10px;">
                    

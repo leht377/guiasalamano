@@ -52,7 +52,15 @@
             session_start();
             $id = $_SESSION["id"];
             $contrato = new contrato_model();
-            $res = $contrato->listContratoSolicitadobyId($id);
+            $res = $contrato->listContratoSolicitadobyId($id,"solicitado");
+            echo json_encode($res);
+        }
+
+        public function getlistclienteAceptados(){
+            session_start();
+            $id = $_SESSION["id"];
+            $contrato = new contrato_model();
+            $res = $contrato->listContratoSolicitadobyId($id,"aceptado");
             echo json_encode($res);
         }
 
@@ -62,7 +70,16 @@
             $contrato = new contrato_model();
             $res = $contrato->setEstadoContrato($id,$estado);
             echo $res;
+        }
+
+        public function aceptarSolicitudContrato(){
+            $id = $_POST["id_contrato"];
+            $estado = "aceptado";
+            $contrato = new contrato_model();
+            $res = $contrato->setEstadoContrato($id,$estado);
+            echo $res;
         }   
+        
 
         public function logout(){
             session_start();

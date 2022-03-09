@@ -30,12 +30,12 @@
             return true;
         }
 
-        function listContratoSolicitadobyId($id){
+        function listContratoSolicitadobyId($id,$estado){
             $sql = "
             SELECT contrato.id,cliente.nombres as cliente_nombre,cliente.foto,cliente.apellidos,sitio.nombre as sitio_nombre,fecha,hora 
                     FROM contrato INNER JOIN cliente ON contrato.cliente_id = cliente.id 
                     INNER JOIN sitio ON sitio.id = contrato.sitio_id
-                    WHERE guia_id = $id AND  contrato.estado = 'solicitado';
+                    WHERE guia_id = $id AND  contrato.estado = '$estado';
             ";
 
             $res = $this->db->query($sql);
