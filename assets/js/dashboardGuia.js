@@ -48,6 +48,7 @@ function aceptarSolicitud(id_contrato){
     }
   });
 }
+
 function rechazarSolicitud(id_contrato){
     Swal.fire({
       title: "Rechazar solicitud",
@@ -85,6 +86,7 @@ function rechazarSolicitud(id_contrato){
       }
     });
 }
+
 function getClientesAceptados(){
   $.ajax({
     type: "GET",
@@ -121,8 +123,8 @@ function getClientesAceptados(){
                     </a>
                     <ul class="dropdown-menu bg-violet-dark menu_clientes_solicitado" aria-labelledby="dropdownMenuLink">
                       <li><a class="dropdown-item text-white fw-bold" href="#" >Ver informacion completa</a></li>
-                      <li><a class="dropdown-item text-white fw-bold" href="#" onclick="aceptarSolicitud(${cliente.id})" >Aceptar solicitud</a></li>
-                      <li><a class="dropdown-item text-white fw-bold" href="#" onclick="rechazarSolicitud(${cliente.id})">Rechazar solicitud</a></li>
+                      <li><a class="dropdown-item text-white fw-bold" href="#" >Aceptar solicitud</a></li>
+                      <li><a class="dropdown-item text-white fw-bold" href="#">Rechazar solicitud</a></li>
                     </ul>
                 </div> 
             
@@ -162,15 +164,15 @@ function getClientesSolicitando(){
   $.ajax({
     type: "GET",
     url: "index.php?c=guiaDashboard&a=getlistsolicitudguia",
-    // beforeSend: function () {
-    //   template = `
-    //         <div class="spinner-border text-light" role="status">
-    //             <span class="visually-hidden">Loading...</span>
-    //         </div>
+    beforeSend: function () {
+      template = `
+            <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
             
-    //         `;
-    //   $("#contenidoDash").html(template);
-    // },
+            `;
+      $("#contenidoDash").html(template);
+    },
     success: function (response) {
       template = "";
       rows = "";
@@ -193,8 +195,8 @@ function getClientesSolicitando(){
                     </a>
                     <ul class="dropdown-menu bg-violet-dark menu_clientes_solicitado" aria-labelledby="dropdownMenuLink">
                       <li><a class="dropdown-item text-white fw-bold" href="#" >Ver informacion completa</a></li>
-                      <li><a class="dropdown-item text-white fw-bold" href="#" onclick="aceptarSolicitud(${cliente.id})" >Aceptar solicitud</a></li>
-                      <li><a class="dropdown-item text-white fw-bold" href="#" onclick="rechazarSolicitud(${cliente.id})">Rechazar solicitud</a></li>
+                      <li><a class="dropdown-item text-white fw-bold" href="#" onclick="aceptarSolicitud(${cliente.id_contrato})" >Aceptar solicitud</a></li>
+                      <li><a class="dropdown-item text-white fw-bold" href="#" onclick="rechazarSolicitud(${cliente.id_contrato})">Rechazar solicitud</a></li>
                     </ul>
                 </div> 
             

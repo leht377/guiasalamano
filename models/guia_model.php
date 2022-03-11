@@ -22,12 +22,23 @@
             
 			$sql = "SELECT id,nombre FROM tipodocumento";
 			$resultado = $this->db->query($sql);
-			while($row = $resultado->fetch_assoc())
-			{
+			while($row = $resultado->fetch_assoc()){
 				$this->tipoDocumento[] = $row;
 			}
 			return $this->tipoDocumento;
             
+        }
+        
+        public function getCampoGuia($campo,$id){
+            
+            $sql = "SELECT $campo FROM guia WHERE `id` = $id";
+			$resultado = $this->db->query($sql);
+
+			while($row = $resultado->fetch_assoc()){
+				$this->guias[] = $row;
+			}
+			return $this->guias;
+
         }
 
         public function createCredencials($user,$password){

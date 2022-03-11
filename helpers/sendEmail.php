@@ -33,8 +33,8 @@
 
                 //Content
                 $mail->isHTML(true);                                  //Set email format to HTML
-                $mail->Subject = 'PRUEBA';
-                $mail->Body    = 'HOLA JHOANAN PUTO !</b>';
+                $mail->Subject = 'Solicitud';
+                $mail->Body    = 'Desde guiaslamano te informamos que estas siendo solicitado, porfavor revisa la plataforma !</b>';
                 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
                 $mail->send();

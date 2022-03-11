@@ -176,7 +176,7 @@ function showContratarguia(id_sitio,id_guia) {
       console.log(resultado);
       template = `
     <div class="row container-fluid p-2 py-3 rounded">
-                            <div class="container col-12 col-sm-12 col-xl-3 d-flex flex-column justify-content-start ">
+                            <div class="container  order-xl-1 order-2 col-12 col-sm-12 col-xl-3 d-flex flex-column justify-content-start ">
                                 <div class="card w-100">
                                     <div class="img1"><img src="https://upload.wikimedia.org/wikipedia/commons/5/53/La_Bocana_Port.jpg" >
                                     </div>
@@ -202,7 +202,7 @@ function showContratarguia(id_sitio,id_guia) {
                                 </div>
                                 
                             </div>
-                            <div class="col-12 col-xl-9 mt-3 mt-xl-0 ">
+                            <div class="col-12 col-xl-9 mt-3 mt-xl-0 order-xl-2 order-1">
                                 <header class="w-100" style="height: 200px;">
                                     <img class="w-100 h-100 rounded" style="object-fit: cover;" src="${resultado[1].img}" >
                                 </header>

@@ -189,6 +189,12 @@ class clienteDashboardController
         $numer = new  mensajeswhatp ();
         $numer->mensajeswhatp();
      }
+    
+    private function recupararCampoGuia($campo,$id){
+        $modelguia = new guia_model();
+        $dataguia = $modelguia->getCampoGuia($campo,$id);
+        return $dataguia[0][$campo];
+    } 
 
     public function solcitarguia(){
         session_start();
@@ -200,8 +206,11 @@ class clienteDashboardController
 
         $contrato = new contrato_model();
         $res = $contrato->crearContrato($id_cliente,$id_sitio, $id_guia,$fecha_solicitud,$hora_solicitud);
+
         if($res ==1){
-           $this-> mailer("soydelverde377@gmail.com");
+            $emailGuia = $this->recupararCampoGuia("Email", $id_guia);
+            $this-> mailer($emailGuia);
+            // $this->twilio();
         }
         echo $res;
     }
