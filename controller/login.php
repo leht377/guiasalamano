@@ -5,8 +5,8 @@ use function PHPSTORM_META\map;
     class loginController{
 
         public function __construct(){
-            session_start();
-            session_destroy();
+            // session_start();
+            // session_destroy();
             require_once("./models/login_model.php");
         }
 

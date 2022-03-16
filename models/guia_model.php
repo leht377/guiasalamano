@@ -121,7 +121,7 @@
         }
 
         public function getGuiasbySitios($id){
-            $sql = "SELECT id,nombres,foto FROM guia WHERE sitiopostulado = '$id';";
+            $sql = "SELECT id,nombres,foto FROM guia WHERE sitiopostulado = '$id' and estado = 'activo';";
 			$resultado = $this->db->query($sql);
             while($row = $resultado->fetch_assoc())
 			{
@@ -130,18 +130,35 @@
 			return $this->guias;
         }
 
-        public function postularSitio($id_sitio, $id_guia){
-            $sql = "UPDATE `guia` SET `sitiopostulado` = $id_sitio WHERE `id` = $id_guia" ;
+     
+        private function contratopendientes($id_de_guia){
+            $sql = "SELECT id FROM contrato WHERE guia_id = $id_de_guia and estado = 'solicitado' ";
             $res = $this->db->query($sql);
-            if ($res === false) {
-                // echo " <p class='text-white'> SQL Error en credenciales: " . $this->db->error . "</p>";
-                return "false";
+            if(mysqli_num_rows($res)>0){
+                return true;
             }
-            return "true";
+            return false;
+        }
+
+        public function postularSitio($id_sitio, $id_guia){
+            
+            if($this->contratopendientes($id_guia)){
+                return "false";
+            }else{
+                $sql = "UPDATE `guia` SET `sitiopostulado` = $id_sitio WHERE `id` = $id_guia" ;
+                $res = $this->db->query($sql);
+                if ($res === false) {
+                    // echo " <p class='text-white'> SQL Error en credenciales: " . $this->db->error . "</p>";
+                    return "false";
+                }
+                return "true";
+            }
+           
+            
         }
 
         public function getGuiabyid($id){
-            $sql = "SELECT id as id_guia,nombres as nombre_guia ,foto as foto_guia, apellidos as apellido_guia FROM guia WHERE id = '$id';";
+            $sql = "SELECT id as id_guia,nombres as nombre_guia ,foto as foto_guia, apellidos as apellido_guia FROM guia WHERE id = '$id' and estado = 'activo';";
 			$resultado = $this->db->query($sql);
             while($row = $resultado->fetch_assoc())
 			{

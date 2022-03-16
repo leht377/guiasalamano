@@ -73,7 +73,8 @@
                     <div class="container">
                         <h4 class="mt-4 mb-4 text-white fw-bold">Opciones usuario</h4>
                         <ul class="p-0" id="lista-destinos">
-                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button"><i class="fas fa-history"></i><span class="ms-2">Historial</span></li>
+                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button"><i class="fa-solid fa-file-contract"></i><span class="ms-2">Guia contratado</span></li>
+                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button"><i class="fa-solid fa-star"></i><span class="ms-2">Calificar guia</span></li>
                             <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button" onclick="showConfingProfile(<?php echo $_SESSION['id']; ?>)"><i class="fas fa-cog"></i><span class="ms-2">Configurar perfil</span></li>
                             <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button" onclick="logout()"><i class="fas fa-sign-out-alt"></i><span class="ms-2">Log out</span></li>
                         </ul>

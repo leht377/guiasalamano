@@ -185,6 +185,8 @@ function getClientesSolicitando(){
                ${cliente.cliente_nombre} 
             </td>
             <td class="text-white border-0 fw-bold align-middle" >${cliente.sitio_nombre}</td>
+            <td class="text-white border-0 fw-bold align-middle" >${cliente.hora}</td>
+            <td class="text-white border-0 fw-bold align-middle" >${cliente.hora_fin}</td>
             <td class="text-white border-0 fw-bold  d-flex justify-content-between align-items-center" >
                 <div>
                     ${cliente.fecha} 
@@ -214,6 +216,8 @@ function getClientesSolicitando(){
                       <tr class="bg-violet-dark text-white fs-5">
                           <th scope="col">Nombre</th>
                           <th scope="col">Destino</th>
+                          <th scope="col">Hora inicio</th>
+                          <th scope="col">Hora fin</th>
                           <th scope="col">Fecha</th>
                       </tr>
                   </thead>

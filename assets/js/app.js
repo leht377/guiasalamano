@@ -110,10 +110,11 @@ function sendInformationContratacion(id_sitio, id_guia){
   $("#formsolicitarguia").submit(function (ev) {
     let fecha_solicitud = document.getElementById("fecha_solicitud").value;
     let hora_solicitud = document.getElementById("hora_solicitud").value;
+    let hora_final = document.getElementById("hora_final").value;
     $.ajax({
       type: "POST",
       url: $("#formsolicitarguia").attr("action"),
-      data: {"hora_solicitud":hora_solicitud,"fecha_solicitud":fecha_solicitud,"id_sitio": id_sitio,"id_guia": id_guia},
+      data: {"hora_solicitud":hora_solicitud,"hora_final":hora_final,"fecha_solicitud":fecha_solicitud,"id_sitio": id_sitio,"id_guia": id_guia},
       beforeSend: function () {
         Swal.fire({
           title: '<strong>Procesando solicitud</strong>',
@@ -172,6 +173,9 @@ function showContratarguia(id_sitio,id_guia) {
       $("#contenidoDash").html(template);
     },
     success: function (response) {
+      let date = new Date();
+      let output = date.getFullYear() +'-'+String(date.getMonth() + 1).padStart(2, '0') + '-'+ String(date.getDate()).padStart(2, '0');
+
       var resultado = JSON.parse(response);
       console.log(resultado);
       template = `
@@ -212,33 +216,33 @@ function showContratarguia(id_sitio,id_guia) {
                                         <div class="col-6">
                                             <div class="input-group input-group-sm mb-3 bg-violet-dark  bg-violet-dark rounded p-1">
                                                 <span class="input-group-text text-white bg-transparent fw-bold border-0 " id="inputGroup-sizing-sm">Nombres</span>
-                                                <input type="text" class="form-control bg-transparent text-white border-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value ="${resultado[0].nombre_guia}">
+                                                <input readonly type="text" class="form-control bg-transparent text-white border-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value ="${resultado[0].nombre_guia}">
                                               </div>
                                               
                                         </div>
                                         <div class="col-6">
                                             <div class="input-group input-group-sm mb-3 bg-violet-dark rounded p-1">
                                                 <span class="input-group-text text-white fw-bold bg-transparent border-0" id="inputGroup-sizing-sm">Apellidos</span>
-                                                <input type="text" class="form-control bg-transparent text-white border-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value ="${resultado[0].apellido_guia}">
+                                                <input readonly  type="text" class="form-control bg-transparent text-white border-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value ="${resultado[0].apellido_guia}">
                                               </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="input-group input-group-sm mb-3 bg-violet-dark bg-violet-dark rounded p-1">
                                                 <span class="input-group-text text-white bg-transparent fw-bold border-0" id="inputGroup-sizing-sm">Destino</span>
-                                                <input type="text" class="form-control bg-transparent text-white border-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value ="${resultado[1].nombre}">
+                                                <input readonly type="text" class="form-control bg-transparent text-white border-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value ="${resultado[1].nombre}">
                                               </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="input-group input-group-sm bg-violet-dark bg-violet-dark rounded p-1">
                                                 <span class="input-group-text text-white bg-transparent fw-bold border-0" id="inputGroup-sizing-sm">Precio</span>
-                                                <input type="number" class="form-control bg-transparent text-white border-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value ="${resultado[1].precio}">
+                                                <input  readonly type="number" class="form-control bg-transparent text-white border-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value ="${resultado[1].precio}">
                                               </div>
                                         </div>
                                         <h3 class="fw-bold text-white">Seleccionar horario </h3>
                                         <div class="col-12 col-xl-6">
                                             <div class="input-group input-group-sm mb-3 bg-violet-dark bg-violet-dark rounded p-1">
                                                 <span class="input-group-text text-white bg-transparent fw-bold border-0" id="inputGroup-sizing-sm ">Fecha de contratacion</span>
-                                                <input type="date" name="fecha_solicitud"  id="fecha_solicitud" required class="form-control bg-transparent text-white border-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                                <input type="date" name="fecha_solicitud" min="${output}" id="fecha_solicitud" required class="form-control bg-transparent text-white border-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                               </div>
                                         </div>
                                         <div class="col-12 col-xl-6">
@@ -246,6 +250,12 @@ function showContratarguia(id_sitio,id_guia) {
                                                 <span class="input-group-text text-white bg-transparent fw-bold border-0" id="inputGroup-sizing-sm">Hora de contratacion</span>
                                                 <input type="time" name="hora_solicitud" id="hora_solicitud" required class="form-control bg-transparent text-white border-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                               </div>
+                                        </div>
+                                        <div class="col-12 col-xl-6">
+                                        <div class="input-group input-group-sm mb-3 bg-violet-dark bg-violet-dark rounded p-1">
+                                            <span class="input-group-text text-white bg-transparent fw-bold border-0" id="inputGroup-sizing-sm ">Hora de finalizacion</span>
+                                            <input type="time" name="hora_final"  id="hora_final" required class="form-control bg-transparent text-white border-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                          </div>
                                         </div>
                                         <button type="submit" id="btnsolicitarcliente" hidden></button>
                                     </form>

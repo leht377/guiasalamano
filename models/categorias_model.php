@@ -9,7 +9,7 @@
         }
 
         public function getCategorias(){
-            $sql = "SELECT id, nombre,descripcion,img FROM categoria;";
+            $sql = "SELECT id, nombre,descripcion,img FROM categoria WHERE estado = 'activo';";
 			$resultado = $this->db->query($sql);
             while($row = $resultado->fetch_assoc())
 			{

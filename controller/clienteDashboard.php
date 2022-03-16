@@ -199,18 +199,19 @@ class clienteDashboardController
     public function solcitarguia(){
         session_start();
         $hora_solicitud = $_POST["hora_solicitud"];
+        $hora_final = $_POST["hora_final"];
         $fecha_solicitud =$_POST["fecha_solicitud"];
         $id_guia = $_POST["id_guia"];
         $id_sitio = $_POST["id_sitio"];
         $id_cliente = $_SESSION["id"];
 
         $contrato = new contrato_model();
-        $res = $contrato->crearContrato($id_cliente,$id_sitio, $id_guia,$fecha_solicitud,$hora_solicitud);
+        $res = $contrato->crearContrato($id_cliente,$id_sitio, $id_guia,$fecha_solicitud,$hora_solicitud,$hora_final);
 
         if($res ==1){
             $emailGuia = $this->recupararCampoGuia("Email", $id_guia);
-            $this-> mailer($emailGuia);
             // $this->twilio();
+            // $this-> mailer($emailGuia);
         }
         echo $res;
     }
