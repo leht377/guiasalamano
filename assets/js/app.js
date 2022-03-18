@@ -48,10 +48,11 @@ function enviarCalificacion(){
     let start = document.querySelectorAll(".startActive");
     var calificacion = start.length;
     var id_guia =  $('#id_guia_modal').val();
+    var id_contraro =  $('#id_contraro_modal').val();
     $.ajax({
       type: "POST",
       url: "index.php?c=clienteDashboard&a=guardarCalificacion",
-      data: {"calificacion": calificacion,"id_guia":id_guia},
+      data: {"calificacion": calificacion,"id_guia":id_guia,"id_contrato":id_contraro},
       success: function (response) {
         console.log("respons : "+response);
         if(response){
@@ -88,7 +89,7 @@ function calificar(calificacion){
    }
 }
 
-function showModalCalificarguia(id_guia,nombre_guia,destino,fecha,foto_guia,foto_destino,precio){
+function showModalCalificarguia(id_guia,nombre_guia,destino,fecha,foto_guia,foto_destino,precio,id_contraro){
   var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'), {
     keyboard: false
   });
@@ -97,6 +98,7 @@ function showModalCalificarguia(id_guia,nombre_guia,destino,fecha,foto_guia,foto
   $('#name_guia_modal').text(nombre_guia);
   $('#precio_destino_modal').text(precio);
   $('#destino_modal').attr("value",destino);
+  $('#id_contraro_modal').attr("value",id_contraro);
   $('#id_guia_modal').attr("value",id_guia);
   $('#fecha_destino_modal').attr("value",fecha);
   $("#foto_guia_modal").attr("src",foto_guia);
@@ -130,7 +132,7 @@ function getGuiasparaCalificar(){
             <td class="text-white border-0 fw-bold align-middle" >${data.fecha}</td>
             <td class="text-white border-0 fw-bold align-middle" >${data.hora} </td>    
             <td class="text-white border-0 fw-bold" >
-            <button class="btn btn-yellow " onclick="showModalCalificarguia('${data.guia_id}','${data.guia_nombre}','${data.nombre_sitio}','${data.fecha}','${data.foto_guia}','${data.sitio_foto}','${data.precio}')">Calificar</button>
+            <button class="btn btn-yellow " onclick="showModalCalificarguia('${data.guia_id}','${data.guia_nombre}','${data.nombre_sitio}','${data.fecha}','${data.foto_guia}','${data.sitio_foto}','${data.precio}','${data.id_contrato}')">Calificar</button>
             </td>    
            
         </tr>

@@ -206,11 +206,18 @@ class clienteDashboardController
     public function guardarCalificacion(){
         session_start();
         $calificacion = $_POST["calificacion"];
+        $id_contrato = $_POST["id_contrato"];
         $id_guia = $_POST["id_guia"];
         $fechaActual = date('Y-m-d');
         $id_cliente = $_SESSION["id"];
         $cali = new calificacion_model();
         $res =  $cali->create($fechaActual,$calificacion,$id_cliente,$id_guia);
+        if($res){
+            $contrato = new contrato_model();
+            $contrato->setEstadoContrato($id_contrato,"calificado");
+            $guia = new guia_model();
+            $guia->refrescarCalificacionGuia($id_guia);
+        }
         echo $res;
      
     }
@@ -230,7 +237,7 @@ class clienteDashboardController
         if($res ==1){
             $emailGuia = $this->recupararCampoGuia("Email", $id_guia);
             // $this->twilio();
-             $this-> mailer($emailGuia);
+            //  $this-> mailer($emailGuia);
         }
         echo $res;
     }

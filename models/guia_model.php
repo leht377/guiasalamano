@@ -156,7 +156,43 @@
            
             
         }
+        private function calcularPromedioCalificacion($id_guia)
+        {
+            $sql = "
+                SELECT avg(puntos) as promedio from calificacion WHERE guia_id = $id_guia; 
+            ";
+            $res = $this->db->query($sql);
 
+            if ($res === false) {
+                echo "<br> <p class='text-white'> SQL Error en registrar: " . $this->db->error . "</p>";
+            }
+    
+            while ($row = $res->fetch_assoc()) {
+                $this->contrato[] = $row;
+            }
+    
+            return [$this->contrato[0]["promedio"],true];
+        }
+        public function actualizarCalificacionGuia($id_guia,$nuevaCalificacion){
+            $sql = "UPDATE `guia` SET `calificacion` = $nuevaCalificacion WHERE `id` = $id_guia" ;
+                $res = $this->db->query($sql);
+                if ($res === false) {
+                    // echo " <p class='text-white'> SQL Error en credenciales: " . $this->db->error . "</p>";
+                    return false;
+                }
+                return true;
+        }
+
+        public function refrescarCalificacionGuia($id_guia){
+            [$nuevaCalificacion,$estado] = $this->calcularPromedioCalificacion($id_guia); 
+            if($estado){
+                $estado =  $this->actualizarCalificacionGuia($id_guia,$nuevaCalificacion);
+                if($estado){
+                    return true;
+                }
+            }
+            return false;
+        }
         public function getGuiabyid($id){
             $sql = "SELECT id as id_guia,nombres as nombre_guia ,foto as foto_guia, apellidos as apellido_guia FROM guia WHERE id = '$id' and estado = 'activo';";
 			$resultado = $this->db->query($sql);

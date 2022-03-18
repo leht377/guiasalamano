@@ -69,6 +69,7 @@
                                         </div>
                                     </div>
                                     <input type="hidden" id="id_guia_modal" value="">
+                                    <input type="hidden" id="id_contraro_modal" value="">
                                     <h4 class="text-white">Calificar al guia</h4>
                                     <div class="d-flex col-12" style="font-size: 2rem;">
                                         <span id="start5" onclick="calificar(5)" class="order-5 estrella"><i class="fa-solid fa-star" style="cursor:pointer"></i></span>

@@ -29,6 +29,7 @@
             }
             return true;
         }
+       
 
         function listContratofinalizadobyCliente($id_cliente){
             $sql ="
