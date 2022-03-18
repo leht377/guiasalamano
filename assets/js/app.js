@@ -37,6 +37,134 @@ $(document).ready(function () {
 function enviarFormSolicitarguia(){
   document.getElementById("btnsolicitarcliente").click();
 }
+function limpiarStart(){
+  let start = document.querySelectorAll(".estrella");
+  start.forEach((e)=>{
+       e.classList.remove("startActive");
+  });
+}
+
+function enviarCalificacion(){
+    let start = document.querySelectorAll(".startActive");
+    var calificacion = start.length;
+    var id_guia =  $('#id_guia_modal').val();
+    $.ajax({
+      type: "POST",
+      url: "index.php?c=clienteDashboard&a=guardarCalificacion",
+      data: {"calificacion": calificacion,"id_guia":id_guia},
+      success: function (response) {
+        console.log("respons : "+response);
+        if(response){
+          Swal.fire({
+            icon: "success",
+            title: "Actualizar infomacion",
+            text: "Se han calificado al guia!",
+            color: "white",
+            background: "#4618AC",
+            iconColor: "white",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+          setTimeout(()=>{
+              window.location.href = "index.php?c=clienteDashboard"
+          },1000);
+        }
+      }
+    });
+}
+
+function calificar(calificacion){
+  let start = document.querySelectorAll(".estrella");
+  calificacion = calificacion-1;
+   
+  limpiarStart();
+
+   let iteracciones = 0;
+   for(let i = 4; i >= 0 ; i--){
+       if(iteracciones <= calificacion){
+           start[i].classList.add("startActive");
+       }
+       iteracciones +=1;
+   }
+}
+
+function showModalCalificarguia(id_guia,nombre_guia,destino,fecha,foto_guia,foto_destino,precio){
+  var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'), {
+    keyboard: false
+  });
+  myModal.show();
+  limpiarStart();
+  $('#name_guia_modal').text(nombre_guia);
+  $('#precio_destino_modal').text(precio);
+  $('#destino_modal').attr("value",destino);
+  $('#id_guia_modal').attr("value",id_guia);
+  $('#fecha_destino_modal').attr("value",fecha);
+  $("#foto_guia_modal").attr("src",foto_guia);
+  $("#foto_destino_modal").attr("src",foto_destino);
+
+}
+
+function getGuiasparaCalificar(){
+  $.ajax({
+    type: "GET",
+    url: "index.php?c=clienteDashboard&a=listguiasContratofinalizado",
+    beforeSend: function () {
+      template = `
+            <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            
+            `;
+      $("#contenidoDash").html(template);
+    },
+    success: function (response) {
+      template = "";
+      rows = "";
+      var resultado = JSON.parse(response);
+      console.log(resultado);
+      resultado.forEach((data,index) => {
+        rows += `
+        <tr class="${index % 2 == 0 ? 'bg-violet':'bg-violet-dark' } border-0 filas">
+            <td class="text-white border-0 fw-bold align-middle" >${data.guia_nombre}</td>
+            <td class="text-white border-0 fw-bold align-middle" >${data.nombre_sitio}</td>
+            <td class="text-white border-0 fw-bold align-middle" >${data.fecha}</td>
+            <td class="text-white border-0 fw-bold align-middle" >${data.hora} </td>    
+            <td class="text-white border-0 fw-bold" >
+            <button class="btn btn-yellow " onclick="showModalCalificarguia('${data.guia_id}','${data.guia_nombre}','${data.nombre_sitio}','${data.fecha}','${data.foto_guia}','${data.sitio_foto}','${data.precio}')">Calificar</button>
+            </td>    
+           
+        </tr>
+    
+        `;
+      });
+
+      template += `
+          <div class="w-100">
+          <div class="table-responsive">
+              <table class="table overflow-hidden rounded border-0" >
+                  <thead>
+                      <tr class="bg-violet-dark text-white fs-5">
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Destino</th>
+                          <th scope="col">Fecha</th>
+                          <th scope="col">Hora</th>
+                          <th scope="col">Opciones</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      ${rows}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      `;
+
+       document.getElementById("title-dashboard").textContent = "Calificar guias";
+      $("#contenidoDash").html(template);
+
+    },
+  });
+}
 
 function getCategorias() {
   $.ajax({

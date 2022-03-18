@@ -29,7 +29,17 @@ body::-webkit-scrollbar-thumb {
 .bg-yellow{
     background-color: #FAD318;
 }
-
+.btn-yellow{
+    background-color: #FAD318;
+    font-weight: bold;
+    padding: 2px 10px;
+    border-radius: 4px;
+    border: 0px;
+}
+.btn-yellow:hover{
+    transition: ease;
+    background-color:#d8b817
+}
 .active-menu-opcion{
     background-color: #FAD318;
     color: black !important;
@@ -262,15 +272,9 @@ body::-webkit-scrollbar-thumb {
 /* ________ESTILOS TABLE CLIENTES SOLICITANDO_______*/
 /* ________________________________________________*/
 
-.filas:hover{
-    transition: .3s ease;
-    background: #FAD318;
-}
 
-.filas:hover td , .filas:hover .btn_solicitado{
-    transition: .3s ease;
-    color: black !important;
-}
+
+
 .menu_clientes_solicitado{
     -webkit-box-shadow: -1px 4px 15px 1px rgba(0,0,0,0.79); 
     box-shadow: -1px 4px 15px 1px rgba(0,0,0,0.79); 
@@ -292,4 +296,54 @@ body::-webkit-scrollbar-thumb {
   }
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
+}
+
+
+/* ----------------Estilos estrellas guias------------------- */
+/*-----------------------------------------------------------  */
+
+
+#start1:hover{
+    transition: .2s ease all;
+    color: orange;
+}
+
+#start2:hover{
+    transition: .2s ease all;
+    color: orange;
+}
+
+#start3:hover{
+    transition: .2s ease all;
+    color: orange;
+}
+
+#start4:hover{
+    transition: .2s ease all;
+    color: orange;
+}
+
+#start5:hover {
+    transition: .2s ease all;
+    color: orange;
+}
+
+#start2:hover ~ #start1{
+    color: orange;
+}
+
+#start3:hover ~ #start2,  #start3:hover ~  #start1{
+    color: orange;
+}
+
+#start4:hover ~ #start3, #start4:hover ~ #start2,  #start4:hover ~  #start1{
+    color: orange;
+}
+
+#start5:hover ~ #start4, #start5:hover ~ #start3, #start5:hover ~ #start2,  #start5:hover ~  #start1{
+    color: orange;
+}
+
+.startActive{
+    color: orange;
 }

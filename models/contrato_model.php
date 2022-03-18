@@ -30,6 +30,29 @@
             return true;
         }
 
+        function listContratofinalizadobyCliente($id_cliente){
+            $sql ="
+            SELECT contrato.id as id_contrato ,guia.nombres as guia_nombre,guia.id as guia_id, fecha,hora,sitio.nombre as nombre_sitio,guia.foto as foto_guia,
+                sitio.img as sitio_foto,
+                sitio.precio,
+                TIMEDIFF(contrato.hora_fin,contrato.hora) as horas_contrato
+                FROM contrato INNER JOIN guia ON contrato.guia_id = guia.id 
+                INNER JOIN sitio ON sitio.id = contrato.sitio_id
+                WHERE contrato.cliente_id = $id_cliente AND  contrato.estado = 'finalizado';
+            ";
+            $res = $this->db->query($sql);
+
+            if ($res === false) {
+                echo "<br> <p class='text-white'> SQL Error en registrar: " . $this->db->error . "</p>";
+            }
+    
+            while ($row = $res->fetch_assoc()) {
+                $this->contrato[] = $row;
+            }
+    
+            return $this->contrato;
+        }
+
         function listContratoSolicitadobyId($id,$estado){
             $sql = "
             SELECT contrato.id as id_contrato ,cliente.nombres as cliente_nombre,cliente.foto,cliente.apellidos,sitio.nombre as sitio_nombre,fecha,hora,hora_fin 

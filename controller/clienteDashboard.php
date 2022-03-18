@@ -14,6 +14,7 @@ class clienteDashboardController
         require_once("./models/guia_model.php");
         require_once("./models/cliente_model.php");
         require_once("./models/contrato_model.php");
+        require_once("./models/calificacion_model.php");
         $this->sitioFamosos = array();
     }
 
@@ -195,6 +196,24 @@ class clienteDashboardController
         $dataguia = $modelguia->getCampoGuia($campo,$id);
         return $dataguia[0][$campo];
     } 
+    public function listguiasContratofinalizado(){
+        session_start();
+        $id_cliente = $_SESSION["id"];
+        $contrato = new contrato_model();
+        $res = $contrato->listContratofinalizadobyCliente($id_cliente);
+        echo json_encode($res) ;
+    }
+    public function guardarCalificacion(){
+        session_start();
+        $calificacion = $_POST["calificacion"];
+        $id_guia = $_POST["id_guia"];
+        $fechaActual = date('Y-m-d');
+        $id_cliente = $_SESSION["id"];
+        $cali = new calificacion_model();
+        $res =  $cali->create($fechaActual,$calificacion,$id_cliente,$id_guia);
+        echo $res;
+     
+    }
 
     public function solcitarguia(){
         session_start();

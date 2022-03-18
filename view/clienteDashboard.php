@@ -15,13 +15,85 @@
 </head>
 
 <body class="">
-    
+
     <main class="container-fluid vh-100" id="contenido">
+        <!-- MODAL -->
+        <div id="contenedor_modal">
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" id="myModal">
+                    <div class="modal-content bg-violet">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-white fw-bold" id="staticBackdropLabel ">CALIFICAR GUIA</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body row">
+                            
+                            <div class="col-12 col-xl-4  d-flex justify-content-center ">
+                                <div class="card w-100">
+                                    <div class="img1">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/La_Bocana_Port.jpg">
+                                    </div>
+                                    <div class="img2">
+                                        <img id="foto_guia_modal" src=''>
+                                    </div>
+                                    <div class="main-text">
+                                        <h2 id="name_guia_modal"></h2>
+                                        <p>Precio: <span id="precio_destino_modal"></span></p>
+                                        <div>
+                                            <p>Calificacion</p>
+                                            <span class="start"></span>
+                                            <span class="start"></span>
+                                            <span class="start"></span>
+                                            <span class="start"></span>
+                                            <span class="start"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-8">
+                                <header class="w-100" style="height: 170px;">
+                                    <img class="h-100 rounded" style="object-fit: cover; width: 100%;" id="foto_destino_modal" src="">
+                                </header>
+                                <section class="row">
+                                    <h4 class="text-white mt-2">Informacion del destino</h4>
+                                    <div class="col-12 col-xl-6">
+                                        <div class="input-group input-group-sm mb-3 bg-violet-dark bg-violet-dark rounded p-1">
+                                            <span class="input-group-text text-white bg-transparent fw-bold border-0 " id="inputGroup-sizing-sm">Destino visitado</span>
+                                            <input readonly type="text" class="form-control bg-transparent text-white border-0" id="destino_modal" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-xl-6 ">
+                                        <div class="input-group input-group-sm bg-violet-dark bg-violet-dark rounded p-1">
+                                            <span class="input-group-text text-white bg-transparent fw-bold border-0 " id="inputGroup-sizing-sm">Fecha</span>
+                                            <input readonly type="text" class="form-control bg-transparent text-white border-0" id="fecha_destino_modal" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="id_guia_modal" value="">
+                                    <h4 class="text-white">Calificar al guia</h4>
+                                    <div class="d-flex col-12" style="font-size: 2rem;">
+                                        <span id="start5" onclick="calificar(5)" class="order-5 estrella"><i class="fa-solid fa-star" style="cursor:pointer"></i></span>
+                                        <span id="start4" onclick="calificar(4)" class="order-4 estrella"><i class="fa-solid fa-star" style="cursor:pointer"></i></span>
+                                        <span id="start3" onclick="calificar(3)" class="order-3 estrella"><i class="fa-solid fa-star" style="cursor:pointer"></i></span>
+                                        <span id="start2" onclick="calificar(2)" class="order-2 estrella"><i class="fa-solid fa-star" style="cursor:pointer"></i></span>
+                                        <span id="start1" onclick="calificar(1)" class="order-1 estrella startActive"><i class="fa-solid fa-star" style="cursor:pointer"></i></span>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="py-2 border-0 rounded fw-bold btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="py-2 btn-yellow" onclick="enviarCalificacion()">Enviar calificacion</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
         <header class="bg-violet-dark row" style="height: 15%;">
             <div class="col-xl-4 col-md-6 d-flex justify-content-xl-start justify-content-center  align-items-center">
                 <div class="user-header" onclick="getCategorias()">
-                <?php echo' <img src="'. $_SESSION['foto'].'" class="img-fluid" alt="User Pic">';?>
+                    <?php echo ' <img src="' . $_SESSION['foto'] . '" class="img-fluid" alt="User Pic">'; ?>
                 </div>
                 <h6 class="mx-3 mt-2 text-white fw-bold"><?php echo $_SESSION['nombres'] . ' ' . $_SESSION['apellidos']; ?> </h6>
             </div>
@@ -74,7 +146,7 @@
                         <h4 class="mt-4 mb-4 text-white fw-bold">Opciones usuario</h4>
                         <ul class="p-0" id="lista-destinos">
                             <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button"><i class="fa-solid fa-file-contract"></i><span class="ms-2">Guia contratado</span></li>
-                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button"><i class="fa-solid fa-star"></i><span class="ms-2">Calificar guia</span></li>
+                            <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button" onclick="getGuiasparaCalificar()"><i class="fa-solid fa-star"></i><span class="ms-2">Calificar guia</span></li>
                             <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button" onclick="showConfingProfile(<?php echo $_SESSION['id']; ?>)"><i class="fas fa-cog"></i><span class="ms-2">Configurar perfil</span></li>
                             <li class="list-unstyled p-2 text-white rounded fw-bold opciones-menu" role="button" onclick="logout()"><i class="fas fa-sign-out-alt"></i><span class="ms-2">Log out</span></li>
                         </ul>
@@ -82,14 +154,14 @@
                 </div>
             </aside>
             <section class="col-xl-10 col-sm-12 p-3 bg-violet-light">
-                <div class="informacion_dash w-100 d-flex justify-content-between align-items-center px-3 py-2">
+                <div class="informacion_dash w-100 d-flex justify-content-between align-items-center  py-2">
                     <span id="title-dashboard" class="p-2 text-white fw-bold fs-4"></span>
                 </div>
-               
-                    <div class="d-flex flex-wrap justify-content-around align-items-center" id="contenidoDash" style="gap:10px;">
-                            
-                    </div>
-                
+
+                <div class="d-flex flex-wrap justify-content-around align-items-center" id="contenidoDash" style="gap:10px;">
+
+                </div>
+
             </section>
         </main>
         <footer class="bg-violet-dark row text-center" style="min-height: 100px">
