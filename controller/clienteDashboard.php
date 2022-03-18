@@ -211,7 +211,7 @@ class clienteDashboardController
         if($res ==1){
             $emailGuia = $this->recupararCampoGuia("Email", $id_guia);
             // $this->twilio();
-            // $this-> mailer($emailGuia);
+             $this-> mailer($emailGuia);
         }
         echo $res;
     }
