@@ -309,7 +309,7 @@ function showContratarguia(id_sitio,id_guia) {
       var resultado = JSON.parse(response);
       console.log(resultado);
       template = `
-    <div class="row container-fluid p-2 py-3 rounded">
+      <div class="row container-fluid p-2 py-3 rounded">
                             <div class="container  order-xl-1 order-2 col-12 col-sm-12 col-xl-3 d-flex flex-column justify-content-start ">
                                 <div class="card w-100">
                                     <div class="img1"><img src="https://upload.wikimedia.org/wikipedia/commons/5/53/La_Bocana_Port.jpg" >
@@ -322,11 +322,13 @@ function showContratarguia(id_sitio,id_guia) {
                                         <p>Precio: ${resultado[1].precio} </p>
                                         <div>
                                             <p>Calificacion</p>
-                                            <span class="start"></span>
-                                            <span class="start"></span>
-                                            <span class="start"></span>
-                                            <span class="start"></span>
-                                            <span class="start"></span>
+                                            <div class="d-flex justify-content-center col-12" style="font-size: 1.2rem;">
+                                                <span class="${resultado[0].calificacion >= 1 ? 'startActive' : '' }"><i class="fa-solid fa-star" ></i></span>
+                                                <span class="${resultado[0].calificacion >= 2 ? 'startActive' : '' }"><i class="fa-solid fa-star" ></i></span>
+                                                <span class="${resultado[0].calificacion >= 3 ? 'startActive' : '' }"><i class="fa-solid fa-star" ></i></span>
+                                                <span class="${resultado[0].calificacion >= 4 ? 'startActive' : '' }"><i class="fa-solid fa-star" ></i></span>
+                                                <span class="${resultado[0].calificacion >= 5 ? 'startActive' : '' }"><i class="fa-solid fa-star" ></i></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -431,14 +433,17 @@ function getGuias(id, nombre) {
                             <div class="main-text">
                                 <h2>${Guias.nombres}</h2>
                                 <p>Precio: xxxxx</p>
-                                <p>Distancia: xxxxxx</p>
+                                <p>Edad: ${Guias.edad}</p>
                                 <div>
                                     <p>Calificacion</p>
-                                    <span class="start"></span>
-                                    <span class="start"></span>
-                                    <span class="start"></span>
-                                    <span class="start"></span>
-                                    <span class="start"></span>
+                                    <div class="d-flex justify-content-center col-12" style="font-size: 1.2rem;">
+                                      
+                                        <span class="${Guias.calificacion >= 1 ? 'startActive' : '' }"><i class="fa-solid fa-star" ></i></span>
+                                        <span class="${Guias.calificacion >= 2 ? 'startActive' : '' }"><i class="fa-solid fa-star" ></i></span>
+                                        <span class="${Guias.calificacion >= 3 ? 'startActive' : '' }"><i class="fa-solid fa-star" ></i></span>
+                                        <span class="${Guias.calificacion >= 4 ? 'startActive' : '' }"><i class="fa-solid fa-star" ></i></span>
+                                        <span class="${Guias.calificacion >= 5 ? 'startActive' : '' }"><i class="fa-solid fa-star" ></i></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -40,8 +40,8 @@ class cliente_model
 
     private function createCredencials($user, $password)
     {
-
-        $sql = "INSERT INTO `guiasalamano`.`credenciales` (`user`, `password`,`Rol_id`) VALUES ('$user', '$password',1);";
+        $passwordCryp = password_hash($password,PASSWORD_DEFAULT,['cost'=>10]);
+        $sql = "INSERT INTO `guiasalamano`.`credenciales` (`user`, `password`,`Rol_id`) VALUES ('$user', '$passwordCryp',1);";
 
         $res = $this->db->query($sql);
 
@@ -92,8 +92,8 @@ class cliente_model
 
                     if ($this->createCredencials($user, $password)) {
                         $credencialid = $this->db->insert_id;
-                        $sql = "INSERT INTO cliente (`nombres`, `apellidos`, `documento`, `celular`, `edad`, `email`, `estado`, `procedencia_id`, `tipodocumento_id`, `credenciales_id`)
-                            VALUES ('$nombres', '$apellidos', '$documento', '$celular', '$edad', '$email', 'activo', '$procedencia_id', '$tipodocumento_id', '$credencialid');";
+                        $sql = "INSERT INTO cliente (`nombres`, `apellidos`, `documento`, `celular`, `edad`, `email`, `estado`, `procedencia_id`, `tipodocumento_id`, `credenciales_id`,`foto`)
+                            VALUES ('$nombres', '$apellidos', '$documento', '$celular', '$edad', '$email', 'activo', '$procedencia_id', '$tipodocumento_id', '$credencialid','./recursos_img_usuarios/avatarhombre.jpg');";
 
                         $res = $this->db->query($sql);
 

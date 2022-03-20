@@ -42,8 +42,8 @@
         }
 
         public function createCredencials($user,$password){
-
-            $sql = "INSERT INTO `guiasalamano`.`credenciales` ( `user`, `password`,`Rol_id`) VALUES ('$user', '$password',2);";
+            $passwordCryp = password_hash($password,PASSWORD_DEFAULT,['cost'=>10]);
+            $sql = "INSERT INTO `guiasalamano`.`credenciales` ( `user`, `password`,`Rol_id`) VALUES ('$user', '$passwordCryp',2);";
   
             $res = $this->db->query($sql);
  
@@ -121,7 +121,7 @@
         }
 
         public function getGuiasbySitios($id){
-            $sql = "SELECT id,nombres,foto FROM guia WHERE sitiopostulado = '$id' and estado = 'activo';";
+            $sql = "SELECT id,nombres,foto,calificacion,edad FROM guia WHERE sitiopostulado = '$id' and estado = 'activo';";
 			$resultado = $this->db->query($sql);
             while($row = $resultado->fetch_assoc())
 			{
@@ -194,7 +194,7 @@
             return false;
         }
         public function getGuiabyid($id){
-            $sql = "SELECT id as id_guia,nombres as nombre_guia ,foto as foto_guia, apellidos as apellido_guia FROM guia WHERE id = '$id' and estado = 'activo';";
+            $sql = "SELECT id as id_guia,nombres as nombre_guia ,foto as foto_guia, apellidos as apellido_guia, calificacion FROM guia WHERE id = '$id' and estado = 'activo';";
 			$resultado = $this->db->query($sql);
             while($row = $resultado->fetch_assoc())
 			{
