@@ -80,7 +80,7 @@
             SELECT contrato.id as id_contrato ,cliente.nombres as cliente_nombre,cliente.foto,cliente.apellidos,sitio.nombre as sitio_nombre,fecha,hora,hora_fin 
                     FROM contrato INNER JOIN cliente ON contrato.cliente_id = cliente.id 
                     INNER JOIN sitio ON sitio.id = contrato.sitio_id
-                    WHERE guia_id = $id AND  contrato.estado = 'aceptado' AND fecha <= curdate();
+                    WHERE guia_id = $id AND  contrato.estado = 'aceptado' AND fecha < curdate();
             ";
 
             $res = $this->db->query($sql);

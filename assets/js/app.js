@@ -126,14 +126,11 @@ function getGuiasparaCalificar(){
       console.log(resultado);
       resultado.forEach((data,index) => {
         rows += `
-        <tr class="${index % 2 == 0 ? 'bg-violet':'bg-violet-dark' } border-0 filas">
+        <tr class="${index % 2 == 0 ? 'bg-violet':'bg-violet-dark' } border-0 filas" role="button"  onclick="showModalCalificarguia('${data.guia_id}','${data.guia_nombre}','${data.nombre_sitio}','${data.fecha}','${data.foto_guia}','${data.sitio_foto}','${data.precio}','${data.id_contrato}')">
             <td class="text-white border-0 fw-bold align-middle" >${data.guia_nombre}</td>
             <td class="text-white border-0 fw-bold align-middle" >${data.nombre_sitio}</td>
-            <td class="text-white border-0 fw-bold align-middle" >${data.fecha}</td>
-            <td class="text-white border-0 fw-bold align-middle" >${data.hora} </td>    
-            <td class="text-white border-0 fw-bold" >
-            <button class="btn btn-yellow " onclick="showModalCalificarguia('${data.guia_id}','${data.guia_nombre}','${data.nombre_sitio}','${data.fecha}','${data.foto_guia}','${data.sitio_foto}','${data.precio}','${data.id_contrato}')">Calificar</button>
-            </td>    
+            <td class="text-white border-0 fw-bold align-middle" >${data.fecha}</td> 
+            
            
         </tr>
     
@@ -149,8 +146,6 @@ function getGuiasparaCalificar(){
                           <th scope="col">Nombre</th>
                           <th scope="col">Destino</th>
                           <th scope="col">Fecha</th>
-                          <th scope="col">Hora</th>
-                          <th scope="col">Opciones</th>
                       </tr>
                   </thead>
                   <tbody>

@@ -52,7 +52,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-xl-8">
+                            <div class="col-12 col-xl-8 mt-xl-0 mt-sm-4">
                                 <header class="w-100" style="height: 170px;">
                                     <img class="h-100 rounded" style="object-fit: cover; width: 100%;" id="foto_destino_modal" src="">
                                 </header>
@@ -72,7 +72,7 @@
                                     </div>
                                     <input type="hidden" id="id_guia_modal" value="">
                                     <input type="hidden" id="id_contraro_modal" value="">
-                                    <h4 class="text-white">Calificar al guia</h4>
+                                    <h4 class="text-white mt-sm-2 mt-xl-0">Calificar al guia</h4>
                                     <div class="d-flex col-12" style="font-size: 2rem;">
                                         <span id="start5" onclick="calificar(5)" class="order-5 estrella"><i class="fa-solid fa-star" style="cursor:pointer"></i></span>
                                         <span id="start4" onclick="calificar(4)" class="order-4 estrella"><i class="fa-solid fa-star" style="cursor:pointer"></i></span>
