@@ -3,6 +3,9 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
+*{
+    font-family: roboto;
+}
 
 input[type=number] { -moz-appearance:textfield; }
 
