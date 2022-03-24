@@ -405,7 +405,7 @@ function showContratarguia(id_sitio,id_guia) {
 }
 
 function getGuias(id, nombre) {
-  console.log(nombre);
+  
   $.ajax({
     type: "GET",
     url: "index.php?c=clienteDashboard&a=viewguias&id=" + id,
@@ -421,6 +421,7 @@ function getGuias(id, nombre) {
     success: function (response) {
       template = "";
       var resultado = JSON.parse(response);
+      console.log(resultado);
       resultado.forEach((Guias) => {
         template += `
                 <div class="row text-decoration-none text-white" onclick="showContratarguia(${id},'${Guias.id}')">
@@ -451,8 +452,7 @@ function getGuias(id, nombre) {
                 </div>
                 `;
       });
-      document.getElementById("title-dashboard").textContent =
-        "Guias postulados " + nombre;
+      document.getElementById("title-dashboard").textContent = "Guias postulados " + nombre;
       $("#contenidoDash").html(template);
     },
   });

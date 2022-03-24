@@ -59,7 +59,28 @@
             SELECT contrato.id as id_contrato ,cliente.nombres as cliente_nombre,cliente.foto,cliente.apellidos,sitio.nombre as sitio_nombre,fecha,hora,hora_fin 
                     FROM contrato INNER JOIN cliente ON contrato.cliente_id = cliente.id 
                     INNER JOIN sitio ON sitio.id = contrato.sitio_id
-                    WHERE guia_id = $id AND  contrato.estado = '$estado';
+                    WHERE guia_id = $id AND  contrato.estado = '$estado' AND fecha >= curdate();
+            ";
+
+            $res = $this->db->query($sql);
+
+            if ($res === false) {
+                echo "<br> <p class='text-white'> SQL Error en registrar: " . $this->db->error . "</p>";
+            }
+    
+            while ($row = $res->fetch_assoc()) {
+                $this->contrato[] = $row;
+            }
+    
+            return $this->contrato;
+        }
+
+        function listContratoVencidobyId($id){
+            $sql = "
+            SELECT contrato.id as id_contrato ,cliente.nombres as cliente_nombre,cliente.foto,cliente.apellidos,sitio.nombre as sitio_nombre,fecha,hora,hora_fin 
+                    FROM contrato INNER JOIN cliente ON contrato.cliente_id = cliente.id 
+                    INNER JOIN sitio ON sitio.id = contrato.sitio_id
+                    WHERE guia_id = $id AND  contrato.estado = 'aceptado' AND fecha <= curdate();
             ";
 
             $res = $this->db->query($sql);

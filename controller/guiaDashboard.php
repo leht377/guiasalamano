@@ -64,9 +64,24 @@
             echo json_encode($res);
         }
 
+        public function getlistContratoFinalizado(){
+            session_start();
+            $id = $_SESSION["id"];
+            $contrato = new contrato_model();
+            $res = $contrato->listContratoVencidobyId($id);
+            echo json_encode($res);
+        }
+
         public function rechazarSolicitudContrato(){
             $id = $_POST["id_contrato"];
             $estado = "rechazado";
+            $contrato = new contrato_model();
+            $res = $contrato->setEstadoContrato($id,$estado);
+            echo $res;
+        }
+        public function finalizarContrato(){
+            $id = $_POST["id_contrato"];
+            $estado = "finalizado";
             $contrato = new contrato_model();
             $res = $contrato->setEstadoContrato($id,$estado);
             echo $res;

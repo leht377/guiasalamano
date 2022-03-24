@@ -41,12 +41,12 @@
                                         <p>Precio: <span id="precio_destino_modal"></span></p>
                                         <div>
                                             <p>Calificacion</p>
-                                            <div class="d-flex col-12" style="font-size: 1.5rem;">
-                                                <span id="start5" class="order-5 estrella"><i class="fa-solid fa-star" ></i></span>
-                                                <span id="start4" class="order-4 estrella"><i class="fa-solid fa-star" ></i></span>
-                                                <span id="start3" class="order-3 estrella"><i class="fa-solid fa-star" ></i></span>
-                                                <span id="start2" class="order-2 estrella"><i class="fa-solid fa-star" ></i></span>
-                                                <span id="start1" class="order-1 estrella startActive"><i class="fa-solid fa-star" ></i></span>
+                                            <div class="d-flex col-12 justify-content-center" style="font-size: 1.5rem;">
+                                                <span><i class="fa-solid fa-star"></i></span>
+                                                <span><i class="fa-solid fa-star"></i></span>
+                                                <span><i class="fa-solid fa-star"></i></span>
+                                                <span><i class="fa-solid fa-star"></i></span>
+                                                <span><i class="fa-solid fa-star"></i></span>
                                             </div>
                                         </div>
                                     </div>
