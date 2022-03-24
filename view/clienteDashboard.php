@@ -156,7 +156,7 @@
                     </div>
                 </div>
             </aside>
-            <section class="col-xl-10 col-sm-12 p-3 bg-violet-light">
+            <section class="col-xl-10 col-sm-12 p-3 bg-violet-light min-vh-100 ">
                 <div class="informacion_dash w-100 d-flex justify-content-between align-items-center  py-2">
                     <span id="title-dashboard" class="p-2 text-white fw-bold fs-4"></span>
                 </div>
