@@ -15,6 +15,7 @@ class clienteDashboardController
         require_once("./models/cliente_model.php");
         require_once("./models/contrato_model.php");
         require_once("./models/calificacion_model.php");
+        require_once("./models/login_model.php");
         $this->sitioFamosos = array();
     }
 
@@ -82,23 +83,20 @@ class clienteDashboardController
         echo $dataClientejson;
     }
 
-    public function updateClientInformation($id)
+    public function updateClientInformation()
     {
         $cliente = new cliente_model();
-
         $nombres = $_POST["nombres_cli"];
         $apellidos = $_POST["apellidos_cli"];
-        $documento = (int) $_POST["cedula_cli"];
         $celular = $_POST["celular_cli"];
-        $edad = $_POST["edad_cli"];
         $email = $_POST["email_cli"];
-        $password = $_POST["password_cli"];
+
         session_start();
         $_SESSION['nombres'] = $nombres;
         $_SESSION['apellidos'] = $apellidos;
-
-        $res = $cliente->updateInformation($nombres, $apellidos, $celular, $edad, $email, $password, $documento, $id);
-        $res = json_encode($res);
+        $id = $_SESSION['id'];
+        $res = $cliente->updateInformation($nombres, $apellidos, $celular, $email, $id);
+        
         echo $res;
     }
 
@@ -223,6 +221,13 @@ class clienteDashboardController
         }
         echo $res;
      
+    }
+    public function changePassword(){
+        $oldPassword = $_POST["old_password"];
+        $newPassword = $_POST["new_password"];
+        $login = new login_model();
+        $res = $login->changePassword($oldPassword, $newPassword);
+        echo json_encode($res);
     }
 
     public function solcitarguia(){

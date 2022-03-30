@@ -71,6 +71,7 @@ class cliente_model
         }
         return false;
     }
+
     private function existeCorreo($correo)
     {
         $sql = "SELECT `nombres` FROM cliente WHERE `email` = '$correo'; ";
@@ -139,24 +140,15 @@ class cliente_model
         return $this->clientes;
     }
 
-    public function updateInformation($nombres, $apellidos, $celular, $edad, $email, $password, $documento, $id)
+    public function updateInformation($nombres, $apellidos, $celular, $email, $id)
     {
-        $sql = "UPDATE `cliente` SET `nombres` = '$nombres',`apellidos` = '$apellidos',`celular` = '$celular',`edad` = '$edad',`email` = '$email' WHERE (`id` = '$id');";
+        $sql = "UPDATE `cliente` SET `nombres` = '$nombres',`apellidos` = '$apellidos',`celular` = '$celular',`email` = '$email' WHERE (`id` = '$id');";
         $res = $this->db->query($sql);
 
         if ($res === false) {
             echo " <p class='text-white'> SQL Error en credenciales: " . $this->db->error . "</p>";
             return false;
         }
-
-        $sql2 = "UPDATE `credenciales` SET  `password` = '$password' WHERE (`id` = '$documento'); ";
-        $res2 = $this->db->query($sql2);
-
-        if ($res2 === false) {
-            echo " <p class='text-white'> SQL Error en credenciales: " . $this->db->error . "</p>";
-            return false;
-        }
-
         return true;
     }
 
@@ -181,4 +173,6 @@ class cliente_model
         }
         return true;
     }
+
+    
 }
