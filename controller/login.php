@@ -25,6 +25,7 @@ use function PHPSTORM_META\map;
             $credencial = $credencial [0];
            
             $_SESSION['user'] = $credencial['user'] ;
+            $_SESSION['id_credenciales'] = $credencial['id'] ;
             $_SESSION['Rol'] = $credencial['Rol_id'];
 
             if($credencial['Rol_id'] == $rolCliente){
