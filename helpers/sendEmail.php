@@ -7,7 +7,7 @@
             require 'vendor/autoload.php';
 
             $mail = new PHPMailer(true);
-
+            #HOLA DIEGO
             try {
                 //Server settings
                 $mail->SMTPDebug = 0;                      //Enable verbose debug output
