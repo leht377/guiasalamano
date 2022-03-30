@@ -35,8 +35,8 @@
                 case 2:
                     $rutaAvatar = "./recursos_img_usuarios/avatarmujer.jpg";
                     break;
-                case 'otro':
-                    $rutaAvatar = "./recursos_img_usuarios/avatarmujer.jpg";
+                case 3:
+                    $rutaAvatar = "./recursos_img_usuarios/Avatarotro.png";
                     break;
                 default:
                     $rutaAvatar = "";

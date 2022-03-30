@@ -180,10 +180,12 @@ class clienteDashboardController
 
     }
 
-    private function mailer($addresEmail){
+    private function mailer($addresEmail, $nombreguia, $sitiosolicitado){
         require_once('./helpers/sendEmail.php');
         $email = new helperEmail();
-        $email->sendEmail($addresEmail);
+        $email->sendEmail($addresEmail,$nombreguia,$sitiosolicitado );
+
+
     }
 
     private function twilio (){
@@ -237,8 +239,10 @@ class clienteDashboardController
 
         if($res ==1){
             $emailGuia = $this->recupararCampoGuia("Email", $id_guia);
+            $nombreGuia = $this->recupararCampoGuia("nombres",$id_guia);
+            $sitiosGuia = $this->recupararCampoGuia("sitiopostulado",$id_guia);
             // $this->twilio();
-             $this-> mailer($emailGuia);
+             $this-> mailer($emailGuia,$nombreGuia,$sitiosGuia);
         }
         echo $res;
     }
