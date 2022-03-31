@@ -3,7 +3,7 @@
     use PHPMailer\PHPMailer\Exception;
     class helperEmail{
 
-        public function sendEmail($email){
+        public function sendEmail($email,$nombre,$sitio){
             require 'vendor/autoload.php';
 
             $mail = new PHPMailer(true);
@@ -148,14 +148,14 @@
                         </div>
                 
                         <p class='mesaje1'>
-                            Hola Juan &#128521;
+                            Hola $nombre; &#128521;
                         </p>
                 
                         <p class='mensaje2'>
                 
                             &#128075; Desde Guias a la mano te infromamos que
                             estas siendo solicitado para hacer de guia
-                            hacia el destino '' &#129321;.
+                            hacia el destino $sitio &#129321;.
                         </p>
                 
                         <p class='mensaje3'>
